@@ -28,6 +28,7 @@ cc.Class({
             .delay(2)
             .call(() => { this.bgAngle(); this.playMoveStart() })
             .start()
+            
     },
 
     /**************开始进入战斗时*************** */

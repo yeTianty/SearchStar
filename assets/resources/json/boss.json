@@ -1,0 +1,8 @@
+[
+    {
+        "bossName":"boss1",
+        "bossShape":["1","2","3","4"],
+        "shootModel":["1","2","3","4"],
+        "bossHp":1000
+    }
+]

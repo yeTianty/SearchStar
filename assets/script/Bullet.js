@@ -18,6 +18,11 @@ cc.Class({
         this.node.getComponent(cc.RigidBody).linearVelocity = v
     },
 
+
+    type2() {
+
+    },
+
     onBeginContact: function (contact, selfCollider, otherCollider) {
     },
     update(dt) {

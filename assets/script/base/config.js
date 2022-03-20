@@ -12,7 +12,7 @@ gameData.destroy = function (node) {
     if (node.x > (cc.winSize.width / 2 + node.width / 2) ||
         node.x < (-cc.winSize.width / 2 - node.width / 2) ||
         node.y > (cc.winSize.height / 2 + node.height / 2) ||
-        node.y < (-cc.winSize.height / 2 + node.height / 2)) {
+        node.y < (-cc.winSize.height / 2 - node.height / 2)) {
         node.destroy();
     }
 }

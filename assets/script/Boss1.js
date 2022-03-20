@@ -1,4 +1,4 @@
-const BulletManager = require("./base/BulletManager")
+
 cc.Class({
     extends: cc.Component,
 

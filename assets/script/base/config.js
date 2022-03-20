@@ -9,10 +9,10 @@ gameData.bossModel = false;
 
 // 出屏销毁
 gameData.destroy = function (node) {
-    if (node.x > (cc.winSize.width / 2 + node.width / 2) ||
-        node.x < (-cc.winSize.width / 2 - node.width / 2) ||
-        node.y > (cc.winSize.height / 2 + node.height / 2) ||
-        node.y < (-cc.winSize.height / 2 - node.height / 2)) {
+    if (node.x > (cc.winSize.width) ||
+        node.x < (-cc.winSize.width) ||
+        node.y > (cc.winSize.height) ||
+        node.y < (-cc.winSize.height)) {
         node.destroy();
     }
 }

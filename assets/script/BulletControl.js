@@ -15,7 +15,7 @@ cc.Class({
 
     start() {
         this.init();
-        this.scheduleOnce(this.shootModel, 5)
+        this.schedule(this.shootModel, 5)
     },
 
     init() {
@@ -24,9 +24,24 @@ cc.Class({
     },
 
     shootModel() {
+        let random = Math.random() * 3 | 0;
+        switch (random) {
+            case 0:
+                this.schedule(this.shootType1, 0.3, 9);
+                break;
+            case 1:
+                this.schedule(this.shootType2, 0.1, 8);
+                break;
+            case 2:
+                this.createLine();
+                this.schedule(this.shootType3, 0.2, 4);
+                break;
+            default:
+                break;
+        }
         // this.schedule(this.shootType1, 0.3, 9);
         // this.schedule(this.shootType2, 0.1, 8);
-        this.shootType3();
+        // this.shootType3();
     },
 
     // 攻击模式1
@@ -58,23 +73,14 @@ cc.Class({
     // 射击模式3 以玩家为终点 ，生成3条线并生成大型子弹射出
     shootType3() {
         gameData.bossModel = true;
-        this.createLine();
-        cc.Tween.stopAllByTarget(this.node.getChildByName("lineLayer"));
-        cc.tween(this.node.getChildByName("lineLayer"))
-            .to(0.2, { opacity: 0 })
-            .to(0.2, { opacity: 255 })
-            .to(0.2, { opacity: 0 })
-            .to(0.2, { opacity: 255 })
-            .to(0.2, { opacity: 0 })
-            .call(() => {
-                this.schedule(() => {
-                    this.node.getChildByName("lineLayer").children.forEach(e => {
-                        this.createBigBullet(e);
-                    })
-                }, 0.2, 3)
-            })
-            .start()
 
+        // .call(() => {
+        this.node.getChildByName("lineLayer").children.forEach(e => {
+            this.createBigBullet(e);
+            this.scheduleOnce(() => { e.destroy() }, 1)
+        })
+
+        // })
 
     },
     // 生成大子弹
@@ -83,6 +89,7 @@ cc.Class({
         let com = bullet.addComponent("Bullet");
         let posX = this.node.x + 50 * Math.cos(e.angle * Math.PI / 180);
         let posY = this.node.y + 50 * Math.sin(e.angle * Math.PI / 180);
+        bullet.setPosition(cc.v2(posX, posY))
         com.init(cc.v2(posX, posY).normalize().mul(300))
         this.node.addChild(bullet)
     },
@@ -97,6 +104,14 @@ cc.Class({
             line.angle = angle + i * 30;
             this.node.getChildByName("lineLayer").addChild(line);
         }
+        cc.Tween.stopAllByTarget(this.node.getChildByName("lineLayer"));
+        cc.tween(this.node.getChildByName("lineLayer"))
+            .to(0.2, { opacity: 0 })
+            .to(0.2, { opacity: 255 })
+            .to(0.2, { opacity: 0 })
+            .to(0.2, { opacity: 255 })
+            .to(0.2, { opacity: 0 })
+            .start()
     },
 
     // boss当前状态及 是否可以生成子弹变量
@@ -120,7 +135,5 @@ cc.Class({
             this.angle += 360 / num;
         }
     },
-    update(dt) {
-        console.log(cc.find("Canvas/BossLayer/pos/bulletLayer").children);
-    },
+    // update(dt) { },
 });

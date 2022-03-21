@@ -15,7 +15,7 @@ cc.Class({
 
     start() {
         this.init();
-        this.schedule(this.shootModel, 5)
+        this.schedule(this.shootModel, 3)
     },
 
     init() {
@@ -24,7 +24,8 @@ cc.Class({
     },
 
     shootModel() {
-        let random = Math.random() * 3 | 0;
+        // let random = Math.random() * 3 | 0;
+        let random = 2
         switch (random) {
             case 0:
                 this.schedule(this.shootType1, 0.3, 9);
@@ -34,14 +35,11 @@ cc.Class({
                 break;
             case 2:
                 this.createLine();
-                this.schedule(this.shootType3, 0.2, 4);
+
                 break;
             default:
                 break;
         }
-        // this.schedule(this.shootType1, 0.3, 9);
-        // this.schedule(this.shootType2, 0.1, 8);
-        // this.shootType3();
     },
 
     // 攻击模式1
@@ -51,7 +49,7 @@ cc.Class({
     // 攻击模式1 身边生成一圈子弹随后扩散
     shootType1() {
         gameData.bossModel = true;
-        this.isShoot(12);
+        // this.isShoot(12);
         this.createCircle(12, 300);
         this.shootCount += 1;
     },
@@ -60,7 +58,7 @@ cc.Class({
     shootType2() {
         cc.Tween.stopAllByTarget(this.node);
         gameData.bossModel = true;
-        this.isShoot(8)
+        // this.isShoot(8)
         this.createCircle(8, 300);
         cc.tween(this.node)
             .by(0.1, { angle: 10 })
@@ -72,16 +70,7 @@ cc.Class({
 
     // 射击模式3 以玩家为终点 ，生成3条线并生成大型子弹射出
     shootType3() {
-        gameData.bossModel = true;
-
-        // .call(() => {
-        this.node.getChildByName("lineLayer").children.forEach(e => {
-            this.createBigBullet(e);
-            this.scheduleOnce(() => { e.destroy() }, 1)
-        })
-
-        // })
-
+        this.createBigBullet(e);
     },
     // 生成大子弹
     createBigBullet(e) {
@@ -95,32 +84,31 @@ cc.Class({
     },
     //生成3条线 适用于模式3；
     createLine() {
-        let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position));
-        let angle = cc.v2(this.node.x + 50, this.node.y).signAngle(cc.v2(posV.x, posV.y)) / Math.PI * 180;
-        for (let i = 0; i < 3; i++) {
-            lineLong = posV.mul(2).len()
+        let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position))
+        let angle = cc.v2(1, 0).signAngle(cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)) / Math.PI * 180;
+        for (let i = -1; i < 2; i++) {
+            lineLong = posV.mul(3).len()
             let line = cc.instantiate(gameData.storeHouse.prefab["line"]);
             line.width = lineLong;
-            line.angle = angle + i * 30;
+            line.angle = angle + i * 10 + 180;
+            console.log(angle);
             this.node.getChildByName("lineLayer").addChild(line);
+            cc.tween(this.node.getChildByName("lineLayer"))
+                .to(0.01, { opacity: 255 })
+                .to(1, { opacity: 0 })
+                .call(() => { this.node.getChildByName("lineLayer").destroyAllChildren() })
+                .start()
         }
-        cc.Tween.stopAllByTarget(this.node.getChildByName("lineLayer"));
-        cc.tween(this.node.getChildByName("lineLayer"))
-            .to(0.2, { opacity: 0 })
-            .to(0.2, { opacity: 255 })
-            .to(0.2, { opacity: 0 })
-            .to(0.2, { opacity: 255 })
-            .to(0.2, { opacity: 0 })
-            .start()
+
     },
 
     // boss当前状态及 是否可以生成子弹变量
-    isShoot(sum) {
-        if (this.shootCount >= sum) {
-            this.unschedule(this.shootType1);
-            gameData.bossModel = false
-        }
-    },
+    // isShoot(sum) {
+    //     if (this.shootCount >= sum) {
+    //         this.unschedule(this.shootType1);
+    //         gameData.bossModel = false
+    //     }
+    // },
     // 生成环状子弹
     createCircle(num, speed) {
         let radius = 50;

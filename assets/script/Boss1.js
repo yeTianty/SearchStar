@@ -26,25 +26,25 @@ cc.Class({
             .to(1, { scale: 1, angle: 720 })
             // 测试，将开始进入战斗放入入场之后2s开始
             .delay(2)
-            .call(() => { this.bgAngle(); this.playMoveStart() })
+            .call(() => { this.bgAngle() })
             .start()
-            
+
     },
 
     /**************开始进入战斗时*************** */
     // boss开始移动
-    playMoveStart() {
-        this.schedule(this.playMove, 3)
-    },
-    playMove() {
-        if (gameData.bossModel) {
-            return
-        }
-        cc.Tween.stopAllByTarget(this.node.parent)
-        cc.tween(this.node.parent)
-            .to(1, { x: (Math.random() * (cc.winSize.width - this.bossBg.width) - (cc.winSize.width / 2 - this.bossBg.width / 2)) })
-            .start()
-    },
+    // playMoveStart() {
+    //     this.schedule(this.playMove, 3)
+    // },
+    // playMove() {
+    //     if (gameData.bossModel) {
+    //         cc.Tween.stopAllByTarget(this.node.parent)
+    //     }
+    //     cc.Tween.stopAllByTarget(this.node.parent)
+    //     cc.tween(this.node.parent)
+    //         .to(1, { x: (Math.random() * (cc.winSize.width - this.bossBg.width) - (cc.winSize.width / 2 - this.bossBg.width / 2)) })
+    //         .start()
+    // },
 
     // boss背景出现并旋转
     bgAngle() {

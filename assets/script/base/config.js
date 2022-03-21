@@ -9,10 +9,18 @@ gameData.bossModel = false;
 
 // 出屏销毁
 gameData.destroy = function (node) {
-    if (node.x > (cc.winSize.width) ||
-        node.x < (-cc.winSize.width) ||
-        node.y > (cc.winSize.height) ||
-        node.y < (-cc.winSize.height)) {
+    if (node.x > (cc.winSize.width / 2 + node.width / 2) ||
+        node.x < (-cc.winSize.width / 2 - node.width / 2) ||
+        node.y > (cc.winSize.height / 2 + node.height / 2) ||
+        node.y < (-cc.winSize.height - node.height / 2)) {
         node.destroy();
     }
+}
+
+gameData.colliderTag = {
+    "bossBullet": 100,
+    "heroBullet": 200,
+    "wall": 300,
+    "grade": 400,
+    "hero": 50,
 }

@@ -24,8 +24,11 @@ cc.Class({
     },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
+        if (otherCollider === 200 || 300 || 400 || 50) {
+            this.node.destroy();
+        }
     },
     update(dt) {
-        gameData.destroy(this.node)
+        // gameData.destroy(this.node)
     },
 });

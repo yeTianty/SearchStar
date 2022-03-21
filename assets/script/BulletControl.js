@@ -91,12 +91,14 @@ cc.Class({
             let line = cc.instantiate(gameData.storeHouse.prefab["line"]);
             line.width = lineLong;
             line.angle = angle + i * 10 + 180;
-            console.log(angle);
             this.node.getChildByName("lineLayer").addChild(line);
             cc.tween(this.node.getChildByName("lineLayer"))
                 .to(0.01, { opacity: 255 })
                 .to(1, { opacity: 0 })
-                .call(() => { this.node.getChildByName("lineLayer").destroyAllChildren() })
+                .call(() => {
+                    this.node.getChildByName("lineLayer").destroyAllChildren()
+                    createBigBullet(angle)
+                })
                 .start()
         }
 

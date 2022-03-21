@@ -132,7 +132,7 @@
     "_angularVelocity": 0,
     "_fixedRotation": false,
     "enabledContactListener": true,
-    "bullet": false,
+    "bullet": true,
     "awakeOnLoad": true,
     "_id": ""
   },
@@ -144,10 +144,10 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 100,
+    "tag": 500,
     "_density": 1,
-    "_sensor": false,
-    "_friction": 0.2,
+    "_sensor": true,
+    "_friction": 0,
     "_restitution": 0,
     "body": null,
     "_offset": {

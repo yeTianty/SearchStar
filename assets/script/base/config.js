@@ -18,9 +18,9 @@ gameData.destroy = function (node) {
 }
 
 gameData.colliderTag = {
-    "bossBullet": 100,
+    "bossBullet": 500,
     "heroBullet": 200,
     "wall": 300,
     "grade": 400,
-    "hero": 50,
+    "hero": 100,
 }

@@ -73,6 +73,10 @@ cc.Class({
     start() {
         // 用于判断方向 1为右，-1为左
         this.dir = 0;
+
+        // // 添加碰撞组件
+        // let collider = this.node.addComponent(cc.BoxCollider)
+        // collider.tag = gameData.colliderTag.hero;
     },
 
     runMove() {

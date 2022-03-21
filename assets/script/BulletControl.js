@@ -34,8 +34,10 @@ cc.Class({
                 this.schedule(this.shootType2, 0.1, 8);
                 break;
             case 2:
-                this.createLine();
-
+                this.shootType3();
+                break;
+            case 3:
+                this.shootType4();
                 break;
             default:
                 break;
@@ -69,21 +71,22 @@ cc.Class({
     },
 
     // 射击模式3 以玩家为终点 ，生成3条线并生成大型子弹射出
-    shootType3() {
-        this.createBigBullet(e);
-    },
     // 生成大子弹
     createBigBullet(e) {
-        let bullet = cc.instantiate(gameData.storeHouse.prefab["bullet2"]);
-        let com = bullet.addComponent("Bullet");
-        let posX = this.node.x + 50 * Math.cos(e.angle * Math.PI / 180);
-        let posY = this.node.y + 50 * Math.sin(e.angle * Math.PI / 180);
-        bullet.setPosition(cc.v2(posX, posY))
-        com.init(cc.v2(posX, posY).normalize().mul(300))
-        this.node.addChild(bullet)
+        this.schedule(() => {
+            let bullet = cc.instantiate(gameData.storeHouse.prefab["bullet2"]);
+            let com = bullet.addComponent("Bullet");
+            let posX = this.node.x + 50 * Math.cos(e * Math.PI / 180);
+            let posY = this.node.y + 50 * Math.sin(e * Math.PI / 180);
+            bullet.setPosition(cc.v2(posX, posY))
+            console.log(posX, posY);
+            com.init(cc.v2(-posX, -posY).normalize().mul(400))
+            this.node.addChild(bullet)
+        }, 0.1, 3)
+
     },
     //生成3条线 适用于模式3；
-    createLine() {
+    shootType3() {
         let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position))
         let angle = cc.v2(1, 0).signAngle(cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)) / Math.PI * 180;
         for (let i = -1; i < 2; i++) {
@@ -96,21 +99,25 @@ cc.Class({
                 .to(0.01, { opacity: 255 })
                 .to(1, { opacity: 0 })
                 .call(() => {
+                    this.createBigBullet(line.angle)
                     this.node.getChildByName("lineLayer").destroyAllChildren()
-                    createBigBullet(angle)
                 })
                 .start()
         }
 
     },
 
-    // boss当前状态及 是否可以生成子弹变量
-    // isShoot(sum) {
-    //     if (this.shootCount >= sum) {
-    //         this.unschedule(this.shootType1);
-    //         gameData.bossModel = false
-    //     }
-    // },
+    // 射击模式4
+    shootType4() {
+        
+    },
+
+
+
+
+
+
+
     // 生成环状子弹
     createCircle(num, speed) {
         let radius = 50;

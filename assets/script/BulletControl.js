@@ -24,8 +24,8 @@ cc.Class({
     },
 
     shootModel() {
-        let random = Math.random() * 4 | 0;
-        // let random = 4
+        // let random = Math.random() * 4 | 0;
+        let random = 2
         switch (random) {
             case 0:
                 this.schedule(this.shootType1, 0.3, 9);
@@ -91,7 +91,7 @@ cc.Class({
     //生成3条线 适用于模式3；
     shootType3() {
         let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position))
-        let angle = cc.v2(-1, 0).signAngle(posV/*cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)*/) * 180 / Math.PI;
+        let angle = cc.v2(-1, 0).signAngle(posV) * 180 / Math.PI;
         cc.log(angle)
         for (let i = -2; i < 3; i++) {
             lineLong = posV.mul(3).len()

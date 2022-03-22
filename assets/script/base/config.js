@@ -24,3 +24,19 @@ gameData.colliderTag = {
     "grade": 400,
     "hero": 100,
 }
+
+// 关卡
+gameData.level = {
+    "1": "start",
+    "2": "first",
+    "3": "second",
+    "4": "third",
+    "5": "four",
+    "6": "end",
+
+}
+
+gameData.nowLevel = 1;
+
+// 是否通过当前关卡
+gameData.isPass = false;

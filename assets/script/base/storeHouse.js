@@ -1,4 +1,5 @@
 module.exports = {
     "json": {},
-    "prefab": {}
+    "prefab": {},
+    "frame": {},
 }

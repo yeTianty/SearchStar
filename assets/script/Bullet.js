@@ -45,14 +45,7 @@ cc.Class({
 
     },
 
-    //安全飞行
-    safeLyFly() {
-        
-        // }
-    },
-
     lockFly() {
-        //未锁定敌机情况下的运动向量
         this.count += 1
         if (this.count >= 100) {
             let followV = cc.v2(50 * Math.cos(this.node.angle / Math.PI * 180), 50 * Math.sin(this.node.angle / Math.PI * 180)).sub(this.node.parent.position);
@@ -61,9 +54,11 @@ cc.Class({
             this.node.y += followV.y;
             return
         }
+        // cc.log(this.node.position);
         let followV = cc.v2(0, 1);
-        // console.log(cc.find("Canvas/HeroLayer/hero").position);
+        // console.log("bullet",cc.find("Canvas/HeroLayer/hero").position);
         followV = cc.v2(cc.find("Canvas/HeroLayer/hero").position).sub(cc.v2(this.node.position));
+        // console.log(followV.sub(cc.find("Canvas/HeroLayer/hero").position));
         this.node.angle = -cc.v2(followV).signAngle(cc.v2(0, 1)) * 180 / Math.PI;
         followV = followV.normalize().mulSelf(5);
         this.node.x += followV.x;
@@ -86,11 +81,10 @@ cc.Class({
     // 开始碰撞
     onBeginContact: function (contact, selfCollider, otherCollider) {
         if (otherCollider.tag === 200 || otherCollider.tag === 300 || otherCollider.tag === 400 || otherCollider.tag === 100) {
-            cc.log(1);
             this.node.destroy();
         }
     },
     update(dt) {
-        // gameData.destroy(this.node)
+        gameData.destroy(this.node)
     },
 });

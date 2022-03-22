@@ -119,7 +119,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_type": 1,
+    "_type": 2,
     "_allowSleep": true,
     "_gravityScale": 0,
     "_linearDamping": 0,
@@ -146,7 +146,7 @@
     "_enabled": true,
     "tag": 500,
     "_density": 1,
-    "_sensor": false,
+    "_sensor": true,
     "_friction": 0,
     "_restitution": 0,
     "body": null,

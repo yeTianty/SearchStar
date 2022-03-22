@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>slice_IMG_2563 0001973_000.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1116,358},{357,592}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{357,592}}</string>
+				<key>sourceSize</key>
+				<string>{357,592}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0011973_001.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,680},{649,404}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{649,404}}</string>
+				<key>sourceSize</key>
+				<string>{649,404}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0021973_002.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,358},{728,321}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{728,321}}</string>
+				<key>sourceSize</key>
+				<string>{728,321}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0031973_003.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{611,1454},{585,211}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{585,211}}</string>
+				<key>sourceSize</key>
+				<string>{585,211}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0041973_004.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{100,1955},{98,87}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{98,87}}</string>
+				<key>sourceSize</key>
+				<string>{98,87}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0051973_005.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{611,1896},{241,114}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{241,114}}</string>
+				<key>sourceSize</key>
+				<string>{241,114}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0061973_006.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{729,519},{165,116}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{165,116}}</string>
+				<key>sourceSize</key>
+				<string>{165,116}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0071973_007.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{480,1955},{19,51}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{19,51}}</string>
+				<key>sourceSize</key>
+				<string>{19,51}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0081973_008.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{448,1955},{31,71}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{31,71}}</string>
+				<key>sourceSize</key>
+				<string>{31,71}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0091973_009.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{289,1955},{64,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{64,80}}</string>
+				<key>sourceSize</key>
+				<string>{64,80}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0101973_010.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1085},{642,368}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{642,368}}</string>
+				<key>sourceSize</key>
+				<string>{642,368}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0111973_011.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{643,1218},{345,224}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{345,224}}</string>
+				<key>sourceSize</key>
+				<string>{345,224}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0121973_012.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1454},{610,500}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{610,500}}</string>
+				<key>sourceSize</key>
+				<string>{610,500}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0131973_013.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{199,1955},{89,63}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{89,63}}</string>
+				<key>sourceSize</key>
+				<string>{89,63}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0141973_014.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{1257,357}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{1257,357}}</string>
+				<key>sourceSize</key>
+				<string>{1257,357}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0151973_015.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{199,2019},{59,19}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{59,19}}</string>
+				<key>sourceSize</key>
+				<string>{59,19}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0161973_016.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{354,1955},{61,68}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{61,68}}</string>
+				<key>sourceSize</key>
+				<string>{61,68}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0171973_017.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,1955},{99,92}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{99,92}}</string>
+				<key>sourceSize</key>
+				<string>{99,92}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0181973_018.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{611,1666},{354,229}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{354,229}}</string>
+				<key>sourceSize</key>
+				<string>{354,229}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0191973_019.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{416,2011},{31,26}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{31,26}}</string>
+				<key>sourceSize</key>
+				<string>{31,26}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0201973_020.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{729,358},{344,160}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{344,160}}</string>
+				<key>sourceSize</key>
+				<string>{344,160}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0211973_021.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{416,1955},{30,32}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{30,32}}</string>
+				<key>sourceSize</key>
+				<string>{30,32}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0221973_022.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{650,680},{465,537}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{465,537}}</string>
+				<key>sourceSize</key>
+				<string>{465,537}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0231973_023.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{966,1666},{343,374}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{343,374}}</string>
+				<key>sourceSize</key>
+				<string>{343,374}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0241973_024.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{989,1218},{305,180}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{305,180}}</string>
+				<key>sourceSize</key>
+				<string>{305,180}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0251973_025.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1116,951},{209,195}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{209,195}}</string>
+				<key>sourceSize</key>
+				<string>{209,195}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0261973_026.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1197,1399},{149,186}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{149,186}}</string>
+				<key>sourceSize</key>
+				<string>{149,186}</string>
+			</dict>
+
+			<key>slice_IMG_2563 0271973_027.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{895,519},{121,136}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{121,136}}</string>
+				<key>sourceSize</key>
+				<string>{121,136}</string>
+			</dict>
+
+		</dict>
+
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>size</key>
+			<string>{2048,2048}</string>
+			<key>textureFileName</key>
+			<string>sprites.png</string>
+			</dict>
+		</dict>
+</plist>

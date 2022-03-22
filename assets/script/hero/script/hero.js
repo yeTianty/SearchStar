@@ -159,7 +159,8 @@ cc.Class({
     },
 
     //移动
-    update(dt) {
+    update() {
+        // cc.log("hero", this.node.position);
         this.node.x += this.speed + (this.dir * this.shiftSpeed);
 
         if (this.keyA || this.keyD) {

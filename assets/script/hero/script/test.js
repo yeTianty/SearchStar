@@ -10,6 +10,7 @@ cc.Class({
 
 
     onLoad() {
+
         cc.director.getPhysicsManager().enabled = true;
 
         // cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
@@ -26,14 +27,14 @@ cc.Class({
         this.node.parent.on("touchmove", this.onTouchMove, this);
         this.node.parent.on("touchend", this.onTouchEnd, this);
 
-
+        cc.game.setFrameRate(60)
     },
 
     start() {
         this.shoot = cc.find("Canvas/HeroLayer/hero/player/body/righthand")
         this.hero = cc.find("Canvas/HeroLayer/hero")
         this.dir = 1;
-        this.shootSpeed = 0.05;
+        this.shootSpeed = 0.2;
         this.isCanShoot = false;
         this.isShoot = true;
     },
@@ -86,7 +87,7 @@ cc.Class({
         }
         let location = this.node.convertToNodeSpaceAR(e.getLocation());
         let unitV = location.normalize();
-        let angle = cc.v2(0, -1).signAngle(unitV) * 180 / Math.PI;
+        let angle = cc.v2(0, 1).signAngle(unitV) * 180 / Math.PI;
 
         let bullet = cc.instantiate(this.bullet)
         bullet.angle = angle

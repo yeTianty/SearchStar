@@ -9,20 +9,19 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+
         this.barValue = 0
         // this.totalRes = Object.keys(gameData.storeHouse).length;
         this.loadCount = 0;
         // 开启碰撞
         cc.director.getPhysicsManager().enabled = true
-        // cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
-        //     cc.PhysicsManager.DrawBits.e_pairBit |
-        //     cc.PhysicsManager.DrawBits.e_centerOfMassBit |
-        //     cc.PhysicsManager.DrawBits.e_jointBit |
-        //     cc.PhysicsManager.DrawBits.e_shapeBit;
+        cc.game.setFrameRate(60)
     },
 
     start() {
         this.loadLocalRes("prefab", cc.Prefab, "prefab");
+        this.loadLocalRes("frame", cc.SpriteFrame, "frame");
+        this.loadLocalRes("json", cc.JsonAsset, "json");
         //已加载的资源 计数
         this.loadCount = 0;
         // this.schedule(this.updateLoadingProgress, 0.01);
@@ -43,6 +42,52 @@ cc.Class({
             }
         });
     },
+
+    test() {
+        cc.director.loadScene("play")
+    },
+
+    startClick() {
+        cc.director.loadScene("dialogue");
+    },
+    firstIsPass() {
+        gameData.nowLevel = 2;
+        gameData.isPass = true;
+        cc.director.loadScene("dialogue");
+    },
+
+    firstNoPass() {
+        gameData.nowLevel = 2;
+        gameData.isPass = false;
+        cc.director.loadScene("dialogue");
+    },
+
+    secondStart() {
+        gameData.nowLevel = 3;
+        cc.director.loadScene("dialogue");
+    },
+
+    thirdStart() {
+        gameData.nowLevel = 4;
+        cc.director.loadScene("dialogue");
+    },
+
+    fourIsPass() {
+        gameData.nowLevel = 5;
+        gameData.isPass = true;
+        cc.director.loadScene("dialogue");
+    },
+    fourNoPass() {
+        gameData.nowLevel = 5;
+        gameData.isPass = false;
+        cc.director.loadScene("dialogue");
+    },
+    end() {
+        gameData.nowLevel = 6;
+        cc.director.loadScene("dialogue");
+    },
+
+
     // 进度条
     // updateLoadingProgress() {
     //     this.barValue += 0.3;

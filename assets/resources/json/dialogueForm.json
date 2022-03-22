@@ -1,0 +1,116 @@
+{
+    "start-1": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "巫女大人，我的哥哥怎么一直昏睡？",
+        "frame": 1
+    },
+    "start-2": {
+        "name": "巫女",
+        "dialogue": "不要着急，异乡人，这是因为这个世界存在许多怪物，在你们来到这个世界的过程中你的哥哥应该是受到了怪物的精神攻击，你需要去东方寻找一瓶秘药，它可以救醒你的哥哥。",
+        "frame": 10
+    },
+    "start-3": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "那我马上就去。",
+        "frame": 2
+    },
+    "start-4": {
+        "name": "巫女",
+        "dialogue": "等等，去东方的路途中会有很多怪物，你要消灭它们才能继续前进。",
+        "frame": 30
+    },
+    "start-5": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "？！！可是我只是一个普通人。",
+        "frame": 3
+    },
+    "start-6": {
+        "name": "巫女",
+        "dialogue": "放心，我现在教你魔法。",
+        "frame": 30
+    },
+    "start-7": {
+        "name": "",
+        "dialogue": "经过一段时间的学习，雪乃已经掌握了魔法口诀。",
+        "frame": 5
+    },
+    "start-8": {
+        "name": "巫女",
+        "dialogue": "不错，你很有天赋，现在你只要通过我的考验，就可以去寻找秘药了。",
+        "frame": 40
+    },
+    "start-9": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "开始吧！",
+        "frame": 4
+    },
+    "first-1": {
+        "name": "巫女",
+        "dialogue": "不愧是上帝指派来的救世主，你已经成功通过我的考验，现在就可以去东方了。",
+        "frame": 50,
+        "isPass": true
+    },
+    "first-2": {
+        "name": "巫女",
+        "dialogue": "你已经很棒了，但是还是要继续训练呢。",
+        "frame": 60,
+        "isPass": false
+    },
+    "second-1": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "这个世界居然有这么多怪物吗？",
+        "frame": 1
+    },
+    "second-2": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "那就全都毁灭吧！",
+        "frame": 5
+    },
+    "third-1": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "你就是魔王……吗？",
+        "frame": 6
+    },
+    "third-2": {
+        "name": "魔王",
+        "dialogue": "不错，我正是魔王……,害怕了吗，小鬼",
+        "frame": "wang1"
+    },
+    "third-3": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "交出秘药！",
+        "frame": 5
+    },
+    "third-4": {
+        "name": "魔王",
+        "dialogue": "呵，想要秘药？打得过我再说吧！",
+        "frame": "wang2"
+    },
+    "four-1": {
+        "name": "魔王",
+        "dialogue": "可恶，居然小瞧你了，这次算我栽了。",
+        "frame": "wang3",
+        "isPass": true
+    },
+    "four-2": {
+        "name": "魔王",
+        "dialogue": "你就只有这点能耐吗？快点振作起来吧！",
+        "frame": "wang1",
+        "isPass": false
+    },
+    "end-1": {
+        "name": "赫卡提亚·雪乃",
+        "dialogue": "巫女，我已经拿到秘药了。",
+        "frame": 2
+    },
+    "end-2": {
+        "name": "巫女",
+        "dialogue": "嗯，给你哥哥喝下吧！",
+        "frame": 10
+    },
+    "end-3": {
+        "name": "",
+        "dialogue": "氺星喝下秘药悠悠转醒，寻找秘药之旅再次告一段落，兄妹二人在这异世界又会有怎样的经历，敬请期待......",
+        "frame": 10
+    }
+}

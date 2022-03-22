@@ -24,8 +24,8 @@ cc.Class({
     },
 
     shootModel() {
-        // let random = Math.random() * 3 | 0;
-        let random = 4
+        let random = Math.random() * 4 | 0;
+        // let random = 4
         switch (random) {
             case 0:
                 this.schedule(this.shootType1, 0.3, 9);

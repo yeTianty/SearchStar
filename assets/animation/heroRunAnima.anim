@@ -3,39 +3,188 @@
   "_name": "heroRunAnima",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.06666666666666667,
+  "_duration": 2,
   "sample": 60,
-  "speed": 0.1,
+  "speed": 1,
   "wrapMode": 2,
   "curveData": {
-    "comps": {
-      "cc.Sprite": {
-        "spriteFrame": [
-          {
-            "frame": 0,
-            "value": {
-              "__uuid__": "7274827d-ca96-46f2-94cd-34a9832b1dfd"
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.5,
+          "value": 10
+        },
+        {
+          "frame": 1,
+          "value": 0,
+          "curve": [
+            0.4,
+            0.4,
+            0.6,
+            0.6
+          ]
+        },
+        {
+          "frame": 1.5,
+          "value": -10
+        },
+        {
+          "frame": 2,
+          "value": 0
+        }
+      ]
+    },
+    "paths": {
+      "wing": {
+        "props": {
+          "opacity": [
+            {
+              "frame": 0,
+              "value": 120
+            },
+            {
+              "frame": 0.5,
+              "value": 255
+            },
+            {
+              "frame": 1.5,
+              "value": 120
+            },
+            {
+              "frame": 2,
+              "value": 180
             }
-          },
-          {
-            "frame": 0.016666666666666666,
-            "value": {
-              "__uuid__": "b17e7e12-5d16-405e-a962-e10cf1cc4297"
+          ]
+        }
+      },
+      "body/leg/left": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 0.5,
+              "value": 10,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 1,
+              "value": 0,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 1.5,
+              "value": 10,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 2,
+              "value": 0
             }
-          },
-          {
-            "frame": 0.03333333333333333,
-            "value": {
-              "__uuid__": "8c505bcd-f212-43a1-b98a-3d755cb9bb2a"
+          ]
+        }
+      },
+      "body/leg/right": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 0.5,
+              "value": 5,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 1,
+              "value": 0,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 1.5,
+              "value": 5,
+              "curve": [
+                0.4,
+                0.4,
+                0.6,
+                0.6
+              ]
+            },
+            {
+              "frame": 2,
+              "value": 0
             }
-          },
-          {
-            "frame": 0.05,
-            "value": {
-              "__uuid__": "30037b40-1748-4033-baed-3a4e15bae39b"
+          ]
+        }
+      },
+      "body/leftHand": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -95
+            },
+            {
+              "frame": 1.0166666666666666,
+              "value": -105
+            },
+            {
+              "frame": 2,
+              "value": -95
             }
+          ]
+        }
+      },
+      "head/face/9_16": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": []
           }
-        ]
+        }
       }
     }
   },

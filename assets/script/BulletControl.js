@@ -79,7 +79,7 @@ cc.Class({
             let posX = this.node.x + 50 * Math.cos(e * Math.PI / 180);
             let posY = this.node.y + 50 * Math.sin(e * Math.PI / 180);
             bullet.setPosition(cc.v2(posX, posY))
-            console.log(posX, posY);
+            // console.log(posX, posY);
             com.init(cc.v2(-posX, -posY).normalize().mul(400))
             this.node.addChild(bullet)
         }, 0.1, 3)
@@ -88,13 +88,16 @@ cc.Class({
     //生成3条线 适用于模式3；
     shootType3() {
         let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position))
-        let angle = cc.v2(1, 0).signAngle(cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)) / Math.PI * 180;
-        for (let i = -1; i < 2; i++) {
+        let angle = cc.v2(-1, 0).signAngle(posV/*cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)*/) * 180 / Math.PI;
+        cc.log(angle)
+        for (let i = 0; i < 1; i++) {
             lineLong = posV.mul(3).len()
             let line = cc.instantiate(gameData.storeHouse.prefab["line"]);
-            line.width = lineLong;
-            line.angle = angle + i * 10 + 180;
             this.node.getChildByName("lineLayer").addChild(line);
+            // line.width = lineLong;
+            line.angle = angle;
+            cc.log(line.angle);
+            // this.node.getChildByName("lineLayer").addChild(line);
             cc.tween(this.node.getChildByName("lineLayer"))
                 .to(0.01, { opacity: 255 })
                 .to(1, { opacity: 0 })
@@ -109,7 +112,7 @@ cc.Class({
 
     // 射击模式4
     shootType4() {
-        
+        cc.find("bat", this.node).active = true;
     },
 
 

@@ -9,7 +9,7 @@
   "wrapMode": 2,
   "curveData": {
     "paths": {
-      "slice01_01": {
+      "left": {
         "comps": {
           "cc.Sprite": {
             "spriteFrame": [
@@ -39,9 +39,10 @@
               }
             ]
           }
-        }
+        },
+        "props": {}
       },
-      "slice01_02": {
+      "right": {
         "comps": {
           "cc.Sprite": {
             "spriteFrame": [
@@ -71,7 +72,8 @@
               }
             ]
           }
-        }
+        },
+        "props": {}
       }
     }
   },

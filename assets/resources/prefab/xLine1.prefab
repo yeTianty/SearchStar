@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "line",
+    "_name": "xLine1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -21,27 +21,33 @@
     "_components": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 4
       }
     ],
     "_prefab": {
-      "__id__": 3
+      "__id__": 5
     },
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 232,
+      "g": 222,
+      "b": 73,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1500,
-      "height": 5
+      "width": 2000,
+      "height": 300
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 1,
+      "x": -0.03,
       "y": 0.5
     },
     "_trs": {
@@ -89,7 +95,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "ecf92cb5-afd9-4c62-bf63-e8d795315c4a"
+      "__uuid__": "e9d26fe6-9bda-455a-ac41-629ca9145ffd"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -106,12 +112,63 @@
     "_id": ""
   },
   {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_type": 1,
+    "_allowSleep": true,
+    "_gravityScale": 0,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": false,
+    "enabledContactListener": true,
+    "bullet": true,
+    "awakeOnLoad": true,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 1060,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 2000,
+      "height": 50
+    },
+    "_id": ""
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "67a57fca-2a60-47f8-bb2c-900bdebe3574"
+      "__uuid__": "cd543141-bd67-463d-bb83-113dc7cfd570"
     },
     "fileId": "",
     "sync": false

@@ -21,9 +21,8 @@ cc.Class({
     },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
-        if (otherCollider === 200 || otherCollider === 300 || otherCollider === 400 || otherCollider === 50) {
-            // cc.log(1);
-            this.node.destroy();
+        if (otherCollider.tag === 100) {
+            console.log("hit");
         }
     },
     // update (dt) {},

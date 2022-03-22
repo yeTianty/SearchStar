@@ -25,7 +25,7 @@ cc.Class({
 
     shootModel() {
         // let random = Math.random() * 3 | 0;
-        let random = 2
+        let random = 4
         switch (random) {
             case 0:
                 this.schedule(this.shootType1, 0.3, 9);
@@ -38,6 +38,9 @@ cc.Class({
                 break;
             case 3:
                 this.shootType4();
+                break;
+            case 4:
+                this.shootType5();
                 break;
             default:
                 break;
@@ -90,14 +93,14 @@ cc.Class({
         let posV = cc.v2(this.heroNode.position).sub(cc.v2(this.node.position))
         let angle = cc.v2(-1, 0).signAngle(posV/*cc.v2(this.heroNode.x - this.node.x, this.heroNode.y - this.node.y)*/) * 180 / Math.PI;
         cc.log(angle)
-        for (let i = 0; i < 1; i++) {
+        for (let i = -2; i < 3; i++) {
             lineLong = posV.mul(3).len()
             let line = cc.instantiate(gameData.storeHouse.prefab["line"]);
-            this.node.getChildByName("lineLayer").addChild(line);
-            // line.width = lineLong;
-            line.angle = angle;
-            cc.log(line.angle);
             // this.node.getChildByName("lineLayer").addChild(line);
+            // line.width = lineLong;
+            line.angle = angle + i * 10;
+            cc.log(line.angle);
+            this.node.getChildByName("lineLayer").addChild(line);
             cc.tween(this.node.getChildByName("lineLayer"))
                 .to(0.01, { opacity: 255 })
                 .to(1, { opacity: 0 })
@@ -113,6 +116,48 @@ cc.Class({
     // 射击模式4
     shootType4() {
         cc.find("bat", this.node).active = true;
+        let left = cc.find("bat/left", this.node)
+        let right = cc.find("bat/right", this.node)
+        let xLine = cc.instantiate(gameData.storeHouse.prefab["xLine"]);
+        left.addChild(xLine)
+        let xLine1 = cc.instantiate(gameData.storeHouse.prefab["xLine1"]);
+        xLine.addComponent("Bullet2");
+        xLine1.addComponent("Bullet2")
+        right.addChild(xLine1)
+        this.dir = 1;
+        this.rotate(xLine, this.dir);
+        this.dir = -1
+        this.rotate(xLine1, this.dir);
+    },
+
+    rotate(xLine, dir) {
+        cc.Tween.stopAllByTarget(xLine)
+        cc.tween(xLine)
+            .call(() => { xLine.parent.active = true })
+            .to(2, { angle: 480 * dir })
+            .call(() => { xLine.parent.active = false; xLine.destroy() })
+            // .delay(0.1)
+            // .call(() => {  })
+            .start()
+    },
+
+    shootType5() {
+        this.i = 1;
+        this.j = -2;
+        this.batCount = 0;
+        this.schedule(this.createBatBullet, 0.3, 5);
+    },
+
+    createBatBullet() {
+        this.i *= -1;
+        if (this.i === -1) {
+            this.j += 1
+        }
+        let bat = cc.instantiate(gameData.storeHouse.prefab["bat"]);
+        let com = bat.addComponent("Bullet")
+        com.openSafeLyFly();
+        bat.setPosition(cc.v2(this.node.x + this.i * -200, (this.node.y + this.j * 200)));
+        this.node.addChild(bat);
     },
 
 

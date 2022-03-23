@@ -9,7 +9,7 @@ cc.Class({
     // onLoad () {},
 
     start() {
-        this.node.getComponent(cc.RigidBody).linearVelocity = this.speed.mul(2000);
+        this.node.getComponent(cc.RigidBody).linearVelocity = this.speed.mul(3000);
     },
 
     init(unitV) {

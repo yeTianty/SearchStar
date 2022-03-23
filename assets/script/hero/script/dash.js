@@ -6,13 +6,15 @@ cc.Class({
     },
 
 
-    onLoad() {
-        this.hero = cc.find("Canvas/HeroLayer/hero/player")
-    },
+    // onLoad() { },
 
     start() {
         this.node.angle = this.hero.angle;
         this.node.scaleX = this.hero.scaleX;
+    },
+
+    init(node) {
+        this.hero = node;
     },
 
     update(dt) {

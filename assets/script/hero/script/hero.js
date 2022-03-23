@@ -4,11 +4,13 @@ cc.Class({
 
     properties: {
         dash: cc.Prefab,
+        hpLayer: cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad: function () {
+        gameData.hero = this
         // 键盘监听
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
@@ -16,20 +18,49 @@ cc.Class({
     },
 
     start() {
-        this.hp = 6;
+        this.hp = 10;
         this.jumpW = true;
         this.jumpS = true;
         this.shiftDown = true;
+        this.changeDir = true
         this.ang = 0;
         this.speed = 0;
         this.shiftSpeed = 0;
         this.jumpCount = 2
         this.hero = this.node.getChildByName("player")
-        this.hitBox = cc.find("Canvas/HeroLayer/hero/player/body/hitBox").addComponent("hit")
+        this.hitBox = this.node.getChildByName("player").getChildByName("body").getChildByName("hitBox").addComponent("hit")
         this.hitBox.init(this.hp)
         this.dir = 1;
+        this.createHp();
     },
 
+    createHp() {
+        for (let i = 0; i < 10; i++) {
+            let hpSkin = cc.instantiate(gameData.storeHouse.prefab["hpSkin"])
+            this.hpLayer.addChild(hpSkin);
+        }
+    },
+
+    cantChangeDir() {
+        this.changeDir = false;
+    },
+
+    canChangeDir() {
+        this.changeDir = true
+    },
+
+    /*************************人物入场************************** */
+    heroAdmission() {
+        cc.Tween.stopAllByTarget(this.node);
+        cc.tween(this.node)
+            .call(() => { this.node.scale = 0 })
+            .to(1, { scale: 1, angle: -720 })
+            // .call(() => { this.node.scaleX = -1 })
+            // 测试，将开始进入战斗放入入场之后2s开始
+            .delay(2)
+            .start()
+
+    },
 
     /***************************键盘监听相关*********************************** */
 
@@ -40,6 +71,9 @@ cc.Class({
         if (event.keyCode === cc.macro.KEY.a) {
             this.keyA = true;
             this.dir = -1;
+            if (this.changeDir) {
+                this.node.children[0].scaleX = 1;
+            }
             cc.Tween.stopAllByTarget(this.hero)
             this.speed = -10;
             this.ang = 5
@@ -50,6 +84,9 @@ cc.Class({
         if (event.keyCode === cc.macro.KEY.d) {
             this.keyD = true;
             this.dir = 1;
+            if (this.changeDir) {
+                this.node.children[0].scaleX = -1;
+            }
             cc.Tween.stopAllByTarget(this.hero)
             this.speed = 10;
             this.ang = -5
@@ -77,9 +114,10 @@ cc.Class({
                 this.shiftDown = false;
                 this.shiftSpeed = 30;
                 this.hero.angle = -45 * this.dir;
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 5; i++) {
                     setTimeout(() => {
                         let dash = cc.instantiate(this.dash)
+                        dash.getComponent("dash").init(this.node.children[0])
                         dash.parent = this.node.parent;
                         dash.x = this.node.x;
                         dash.y = this.node.y;
@@ -100,7 +138,7 @@ cc.Class({
 
         //使用技能
         if (event.keyCode === cc.macro.KEY.e) {
-            
+            this.node.getComponent("test").useSkill();
         }
 
     },
@@ -159,8 +197,7 @@ cc.Class({
     },
 
     //移动
-    update() {
-        // cc.log("hero", this.node.position);
+    update(dt) {
         this.node.x += this.speed + (this.dir * this.shiftSpeed);
 
         if (this.keyA || this.keyD) {

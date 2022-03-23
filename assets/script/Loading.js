@@ -9,12 +9,15 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        gameData.loading = this
         this.barValue = 0
         // this.totalRes = Object.keys(gameData.storeHouse).length;
         this.loadCount = 0;
         // 开启碰撞
-        cc.director.getPhysicsManager().enabled = true
+        cc.director.getPhysicsManager().enabled = true;
+        let manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        manager.enabledDebugDraw = true;
         cc.game.setFrameRate(60)
     },
 
@@ -69,7 +72,7 @@ cc.Class({
 
     thirdStart() {
         gameData.nowLevel = 4;
-        cc.director.loadScene("dialogue");
+        cc.find("Canvas/camera/dialogue").active = true;
     },
 
     fourIsPass() {

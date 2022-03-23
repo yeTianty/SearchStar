@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "piao02",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 22,
+  "curveData": {
+    "props": {
+      "angle": [
+        {
+          "frame": 0,
+          "value": 77.73899999999999,
+          "curve": [
+            -0.04420289855072472,
+            0.4449275362318841,
+            0.736231884057971,
+            0.45543478260869574
+          ]
+        },
+        {
+          "frame": 1,
+          "value": 83.72999999999999
+        }
+      ]
+    }
+  },
+  "events": []
+}

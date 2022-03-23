@@ -6,7 +6,7 @@
   "_duration": 0.6666666666666666,
   "sample": 60,
   "speed": 0.6,
-  "wrapMode": 2,
+  "wrapMode": 22,
   "curveData": {
     "paths": {
       "wing/remi_13": {
@@ -357,39 +357,6 @@
             {
               "frame": 0.6666666666666666,
               "value": -28.509
-            }
-          ]
-        }
-      },
-      "face/remi_24": {
-        "comps": {
-          "cc.Sprite": {
-            "spriteFrame": []
-          }
-        }
-      },
-      "head": {
-        "props": {
-          "angle": [
-            {
-              "frame": 0,
-              "value": 0
-            },
-            {
-              "frame": 0.16666666666666666,
-              "value": 3.409
-            },
-            {
-              "frame": 0.3333333333333333,
-              "value": -1.7830000000000004
-            },
-            {
-              "frame": 0.5,
-              "value": -4.529
-            },
-            {
-              "frame": 0.6666666666666666,
-              "value": 0
             }
           ]
         }

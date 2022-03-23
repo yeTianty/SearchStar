@@ -49,6 +49,8 @@ cc.Class({
 
         this.nowLevel = gameData.nowLevel;
 
+        this.state = true;
+
         // 获取到关卡和关卡内容条数
         this.levelList = {};
         for (let i in this.dialogueData) {
@@ -83,7 +85,12 @@ cc.Class({
 
         let level = gameData.level[this.nowLevel];
         if (level === "first" || level === "four") {
-            this.isSelect();
+            if(this.state){
+                this.state = false;
+                level = null
+                this.isSelect();
+            }
+            cc.log(92)
         } else {
             // 当前关卡内容条数
             if (this.dialogueIndex < this.contentCount) {
@@ -94,13 +101,17 @@ cc.Class({
                 this.nowDialogue = this.levelDialogueData.dialogue;
                 this.setContentData(this.dialogueIndex, this.nowDialogue, this.levelDialogueData);
             } else {
+                cc.log(95)
                 // 当前关卡内容播放完
-                if (level === "first") {
-                    cc.director.loadScene("teach");
+                // if (level === "first") {
+                //     cc.director.loadScene("teach");
+                // }
+                if (level === "third") {
+                    // cc.director.loadScene("teach");
+                    cc.find("Canvas/camera/dialogue").active = false;
+                    gameData.BulletControl.goShoot();
                 }
                 this.node.active = false;
-                
-
             }
         }
 
@@ -118,6 +129,8 @@ cc.Class({
             this.setContentData(2, this.nowDialogue, this.levelDialogueData);
         }
     },
+
+    //对话交互界面
     setContentData(num, nowDialogue, levelDialogueData) {
         /**给对话框的说话对象赋值 */
         this.nameTxt.string = this.dialogueData[gameData.level[this.nowLevel] + "-" + num].name;
@@ -171,6 +184,7 @@ cc.Class({
         } else {
             this.contentTxt.string = nowDialogue;
         }
+
     },
 
     dazi(nowDialogue) {
@@ -179,7 +193,6 @@ cc.Class({
                 this.contentTxt.string = nowDialogue.slice(0, this.contentTxt.string.length + 1);
             } else {
                 this.dialogueEnd = true;
-
             }
         }, 0.1, nowDialogue.length + 1, 0.1)
     },

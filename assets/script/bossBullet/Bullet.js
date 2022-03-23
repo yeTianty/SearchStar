@@ -9,7 +9,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        let collider = this.node.addComponent(cc.CircleCollider)
+        collider.tag = 200;
+        collider.radius = this.node.width / 2;
     },
 
     start() {

@@ -10,6 +10,10 @@ cc.Class({
 
     start() {
         this.isDash = false;
+        this.beHited = false;
+        this.playerPos = this.node.parent.parent.getPosition()
+        this.player = this.node.parent.parent.parent;
+        this.camera = gameData.camera;
     },
 
     init(hp) {
@@ -18,20 +22,60 @@ cc.Class({
 
     changeState() {
         this.isDash = true;
-        setTimeout(() => { this.isDash = false; }, 400)
+        setTimeout(() => { this.isDash = false; }, 500)
     },
 
-    onCollisionEnter: function (other, self) {
-        if (!this.isDash && other.tag === 300) {
-            cc.log("被打中了")
-            cc.log(self)
+    beHit() {
+        let hpLayer = cc.find("Canvas/camera/UiLayer/heroHpLayer");
+        if (hpLayer.children.length > 0) {
+            hpLayer.children[0].destroy();
+        } else {
+            console.log("玩家死亡");
+        }
+
+        this.beHited = true;
+
+        cc.tween(this.camera)
+            .to(0.1, { angle: 1 })
+            .to(0.1, { angle: -1 })
+            .to(0.1, { angle: 0 })
+            .start();
+
+        cc.tween(this.player)
+            .to(0.2, { opacity: 100 })
+            .to(0.2, { opacity: 255 })
+            .union()
+            .repeat(5)
+            // .call(() => {
+            //     this.beHited = false;
+            // })
+            .start()
+        this.scheduleOnce(() => { this.beHited = false; }, 3)
+    },
+
+    // onCollisionEnter: function (other, self) {
+    //     if (!this.isDash && !this.beHited && other.tag === 500) {
+    //         this.beHit()
+    //         cc.log("被打中了")
+    //         cc.log(self)
+    //     }
+
+    // },
+
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+
+        if (!this.isDash && !this.beHited && otherCollider.tag === 500) {
+            this.beHit()
+            cc.log("HP-1")
+
         }
 
     },
 
     update(dt) {
-        if (this.isDash) {
-            cc.log(this.isDash);
+        this.node.setPosition(this.playerPos)
+        if (this.isDash || this.beHited) {
+            cc.log("无敌状态");
         }
     },
 });

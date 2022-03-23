@@ -9,13 +9,16 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        gameData.BulletControl = this
         this.bossNode = cc.find("Canvas/BossLayer/pos");
         this.heroNode = cc.find("Canvas/HeroLayer/hero");
+
     },
 
     start() {
         this.init();
-        this.schedule(this.shootModel, 3.5)
+        // this.schedule(this.shootModel, 3)
+        // this.goShoot();
         // this.scheduleOnce(this.shootModel, 3)
     },
 
@@ -23,24 +26,37 @@ cc.Class({
         this.angle = 0;
         this.shootCount = 0;
     },
+    // 启动射击
+    goShoot() {
+        this.schedule(this.shootModel, 3.5)
+    },
+    // 停止射击
+    stopShoot() {
+        this.unschedule(this.shootModel);
+    },
 
     shootModel() {
-        let random = Math.random() * 4 | 0;
+        let random = Math.random() * 5 | 0;
         // let random = 2
         switch (random) {
             case 0:
+                gameData.Boss1.centerMove();
                 this.shootType1();
                 break;
             case 1:
+                gameData.Boss1.returnCenter()
                 this.shootType2();
                 break;
             case 2:
+                gameData.Boss1.stopMove();
                 this.shootType3();
                 break;
             case 3:
+                gameData.Boss1.randomMove();
                 this.shootType4();
                 break;
             case 4:
+                gameData.Boss1.randomMove();
                 this.shootType5();
                 break;
             default:
@@ -48,10 +64,6 @@ cc.Class({
         }
     },
 
-    // 攻击模式1
-    // shootGoType1() {
-
-    // },
     // 攻击模式1 身边生成一圈子弹随后扩散
     shootType1() {
         gameData.bossModel = true;
@@ -60,6 +72,7 @@ cc.Class({
 
     // 攻击模式2 身边生成一圈会旋转的子弹
     shootType2() {
+        gameData.Boss1.returnCenter()
         this.ge = 0
         cc.Tween.stopAllByTarget(this.node);
         gameData.bossModel = true;
@@ -93,6 +106,7 @@ cc.Class({
             this.node.getChildByName("lineLayer").addChild(line);
             this.lineTween(line.angle);
         }
+        this.scheduleOnce(() => { gameData.Boss1.randomMove() }, 0.2)
     },
 
     lineTween(angle) {
@@ -146,7 +160,7 @@ cc.Class({
             // .call(() => {  })
             .start()
     },
-
+    // 射击模式5
     shootType5() {
         this.i = 1;
         this.j = -2;

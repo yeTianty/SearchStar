@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "8fef140f-5dda-4a19-8003-cbfcd7f54f05",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1028,
+  "height": 664,
+  "platformSettings": {},
+  "subMetas": {
+    "红魔堡": {
+      "ver": "1.0.4",
+      "uuid": "0ea9ae9e-813b-4233-b1b1-003d66a68b4a",
+      "rawTextureUuid": "8fef140f-5dda-4a19-8003-cbfcd7f54f05",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1028,
+      "height": 664,
+      "rawWidth": 1028,
+      "rawHeight": 664,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

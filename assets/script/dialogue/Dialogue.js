@@ -95,7 +95,12 @@ cc.Class({
                 this.setContentData(this.dialogueIndex, this.nowDialogue, this.levelDialogueData);
             } else {
                 // 当前关卡内容播放完
+                if (level === "first") {
+                    cc.director.loadScene("teach");
+                }
                 this.node.active = false;
+                
+
             }
         }
 

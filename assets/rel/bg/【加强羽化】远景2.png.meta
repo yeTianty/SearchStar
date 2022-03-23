@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "93bb257a-2015-4962-bdd8-ae8da71e70c4",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 2048,
+  "height": 700,
+  "platformSettings": {},
+  "subMetas": {
+    "【加强羽化】远景2": {
+      "ver": "1.0.4",
+      "uuid": "530a1beb-ca21-4714-8507-d0243e010a51",
+      "rawTextureUuid": "93bb257a-2015-4962-bdd8-ae8da71e70c4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -1,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 2046,
+      "height": 700,
+      "rawWidth": 2048,
+      "rawHeight": 700,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

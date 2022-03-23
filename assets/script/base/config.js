@@ -11,7 +11,7 @@ gameData.bossModel = false;
 gameData.destroy = function (node) {
     if (node.x > (cc.winSize.width / 2 + node.width / 2) ||
         node.x < (-cc.winSize.width / 2 - node.width / 2) ||
-        node.y > (cc.winSize.height / 2 + node.height / 2) ||
+        node.y > (cc.winSize.height * 2 / 3 + node.height / 2) ||
         node.y < (-cc.winSize.height - node.height / 2)) {
         node.destroy();
     }
@@ -23,6 +23,7 @@ gameData.colliderTag = {
     "wall": 300,
     "grade": 400,
     "hero": 100,
+    "boss":600
 }
 
 // 关卡

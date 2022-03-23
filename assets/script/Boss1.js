@@ -3,13 +3,14 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        progressHp: cc.ProgressBar,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
         gameData.Boss1 = this;
+        this.hp = gameData.storeHouse.json["boss"]["boss1"]["bossHp"];
     },
 
     start() {
@@ -62,6 +63,17 @@ cc.Class({
 
     },
 
+    onBeginContact: function (contact, selfCollider, otherCollider) {
+        if (otherCollider.tag === 200) {
+            this.hp -= 10
+            this.progressHp.progress = this.hp / 1000
+            otherCollider.node.destroy();
+            console.log(this.hp);
+            if (this.hp <= 0) {
+                console.log("bossDie");
+            }
+        }
+    },
 
     update(dt) {
         if (this.hero.x <= this.node.parent.x) {

@@ -12,14 +12,10 @@ cc.Class({
         gameData.BulletControl = this
         this.bossNode = cc.find("Canvas/BossLayer/pos");
         this.heroNode = cc.find("Canvas/HeroLayer/hero");
-
     },
 
     start() {
         this.init();
-        // this.schedule(this.shootModel, 3)
-        // this.goShoot();
-        // this.scheduleOnce(this.shootModel, 3)
     },
 
     init() {
@@ -34,10 +30,9 @@ cc.Class({
     stopShoot() {
         this.unschedule(this.shootModel);
     },
-
+    // 射击模式
     shootModel() {
         let random = Math.random() * 5 | 0;
-        // let random = 4
         switch (random) {
             case 0:
                 gameData.Boss1.randomShootModel();

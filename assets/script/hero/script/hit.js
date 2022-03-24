@@ -5,7 +5,6 @@ cc.Class({
 
     },
 
-
     // onLoad () {},
 
     start() {
@@ -17,7 +16,7 @@ cc.Class({
     },
 
     init(hp) {
-        this.hp = hp
+        this.hp = hp;
     },
 
     changeState() {
@@ -32,9 +31,7 @@ cc.Class({
         } else {
             console.log("玩家死亡");
         }
-
         this.beHited = true;
-
         cc.tween(this.camera)
             .to(0.1, { angle: 1 })
             .to(0.1, { angle: -1 })
@@ -46,30 +43,15 @@ cc.Class({
             .to(0.2, { opacity: 255 })
             .union()
             .repeat(5)
-            // .call(() => {
-            //     this.beHited = false;
-            // })
             .start()
         this.scheduleOnce(() => { this.beHited = false; }, 3)
     },
-
-    // onCollisionEnter: function (other, self) {
-    //     if (!this.isDash && !this.beHited && other.tag === 500) {
-    //         this.beHit()
-    //         cc.log("被打中了")
-    //         cc.log(self)
-    //     }
-
-    // },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
 
         if (!this.isDash && !this.beHited && otherCollider.tag === 500) {
             this.beHit()
-            // cc.log("HP-1")
-
         }
-
     },
 
     update(dt) {

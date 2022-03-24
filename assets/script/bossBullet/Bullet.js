@@ -23,11 +23,6 @@ cc.Class({
         this.node.getComponent(cc.RigidBody).linearVelocity = v
     },
 
-
-    type2() {
-
-    },
-
     // 转圈圈，半径扩大
     circleFly() {
         let bossNode = cc.find("Canvas/BossLayer/pos");
@@ -81,7 +76,6 @@ cc.Class({
         this.node.angle = -cc.v2(followV).signAngle(cc.v2(0, 1)) * 180 / Math.PI;
         followV = followV.normalize().mulSelf(4);
         if (cc.v2(cc.find("Canvas/HeroLayer/hero").position).sub(cc.v2(this.node.position)).mag() <= 500) {
-            // cc.Tween.stopAllByTarget(this.node)
             cc.tween(this.node)
                 .by(0.2, { position: cc.v2(followV.x, followV.y) })
                 .call(() => {
@@ -96,38 +90,11 @@ cc.Class({
 
     },
 
-    // 旋转画圆
-    // rotateCircle() {
-    //     if (Math.abs(cc.v2(0, 1).signAngle(this.node.position) / Math.PI * 180) > 60) {
-    //         this.unschedule(this.rotateCircle)
-    //         this.schedule(this.lockFly, 0.01);
-    //     }
-    //     this.spokeV.rotateSelf(this.angleSpeed * Math.PI / 180);
-    //     this.node.setPosition(this.axleV.add(this.spokeV));
-    //     //将子弹进行一个旋转
-    //     this.node.angle += this.angleSpeed;
-    //     // this.rotateCount += Math.abs(this.angleSpeed);
-
-    // },
-
-
-
-
-    // 碰撞进行中
-    // onPreSolve: function (contact, selfCollider, otherCollider) {
-    //     if (otherCollider === 500) {
-    //         this.node.getComponent(cc.PhysicsCircleCollider).sensor = true;
-    //     }
-    // },
-    // // 碰撞结束
-    // onPostSolve: function (contact, selfCollider, otherCollider) {
-    //     this.node.getComponent(cc.PhysicsCircleCollider).sensor = false;
-    // },
     // 开始碰撞
     onBeginContact: function (contact, selfCollider, otherCollider) {
         if (otherCollider.tag === 300 || otherCollider.tag === 400 || otherCollider.tag === 100) {
             if (otherCollider.tag === 100) {
-                console.log("hit");
+                // console.log("hit");
             }
             this.node.destroy();
         }

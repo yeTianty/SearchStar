@@ -75,7 +75,6 @@ cc.Class({
     returnCenter() {
         cc.Tween.stopAllByTarget(this.node.parent);
         cc.tween(this.node.parent)
-            // .delay(1)
             .to(0.1, { position: cc.v2(this.hero.x, 200) })
             .delay(3)
             .start()
@@ -117,12 +116,6 @@ cc.Class({
         else if (random === 3) { this.returnCenter() }
         else if (random === 4) { this.stopMove() }
         else { this.randomMove() };
-    },
-
-    onBeginContact: function (contact, selfCollider, otherCollider) {
-        // if (otherCollider.tag === 200) {
-        //     this.progressHp.progress = this.hp / 1000
-        // }
     },
 
     onCollisionEnter: function (other, self) {

@@ -9,19 +9,19 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        // this.node.dispatchEvent( new cc.Event.EventCustom('bossAdmission', true) );
-        // this.node.dispatchEvent(new cc.Event.EventCustom('openShoot', true));
-        // gameData.Boss = this
-
         gameData.Boss1 = this;
-        this.hp = gameData.storeHouse.json["boss"]["boss1"]["bossHp"];
+        let bossData = gameData.storeHouse.json["boss"]["boss1"]
+        this.hp = bossData["bossHp"];
+        this.hpCount = bossData["hpCount"];
     },
 
     start() {
-        // this.bossAdmission();
         this.bossBg = this.node.parent.getChildByName("bossBg")
         this.hero = cc.find("Canvas/HeroLayer/hero")
         this.anima = this.node.getComponent(cc.Animation)
+        this.quan = cc.find("Canvas/BossLayer/pos/quan")
+        this.nowHpCount = 1;
+        this.lockHp = true
     },
 
     /********boss入场********** */
@@ -45,9 +45,10 @@ cc.Class({
     // boss开始移动
     // 移动至屏幕中间
     centerMove() {
+        let randomTime = Math.random() * 4
         cc.Tween.stopAllByTarget(cc.find("Canvas/BossLayer/pos"))
         cc.tween(cc.find("Canvas/BossLayer/pos"))
-            .to(1, { position: cc.v2(0, 0) })
+            .to(randomTime, { position: cc.v2(0, 0) })
             .start()
     },
 
@@ -55,8 +56,18 @@ cc.Class({
     leftGoRight() {
         cc.Tween.stopAllByTarget(this.node.parent)
         cc.tween(this.node.parent)
-            .to(1, { position: cc.v2(-cc.winSize.width * 1 / 3, 300) })
-            .to(2, { position: cc.v2(cc.winSize.width * 1 / 3, 300) })
+            .to(1, { position: cc.v2(-cc.find("Canvas/camera").width * 1 / 3, 300) })
+            .to(2, { position: cc.v2(cc.find("Canvas/camera").width * 1 / 3, 300) })
+            .start()
+    },
+
+    // 从右至左移动
+    rightGoLeft() {
+        let randomTime = Math.random() * 5
+        cc.Tween.stopAllByTarget(this.node.parent)
+        cc.tween(this.node.parent)
+            .to(randomTime, { position: cc.v2(cc.find("Canvas/camera").width * 1 / 3, 300) })
+            .to(randomTime, { position: cc.v2(-cc.find("Canvas/camera").width * 1 / 3, 300) })
             .start()
     },
 
@@ -73,11 +84,12 @@ cc.Class({
     // 随机移动
     randomMove() {
         let randomX = Math.random() * cc.find("Canvas/camera").width * 2 / 3 - cc.find("Canvas/camera").width / 3
-        let randomY = Math.random() * cc.find("Canvas/camera").height * 3 / 4 - cc.find("Canvas/camera").height / 5
-        let randomTime = Math.random() * 3
+        let randomY = Math.random() * cc.winSize.height * 3 / 4 - cc.winSize.height / 5
+        let randomTime = Math.random() * 5
         cc.Tween.stopAllByTarget(this.node.parent)
         cc.tween(this.node.parent)
             .to(randomTime, { position: cc.v2(randomX, randomY) })
+            .start()
     },
 
     // 停止原地
@@ -97,8 +109,14 @@ cc.Class({
             .start()
     },
     // boss开始发射子弹
-    shootStart() {
-
+    randomShootModel() {
+        let random = Math.random() * 7 | 0;
+        if (random === 0) { this.centerMove() }
+        else if (random === 1) { this.leftGoRight() }
+        else if (random === 2) { this.rightGoLeft() }
+        else if (random === 3) { this.returnCenter() }
+        else if (random === 4) { this.stopMove() }
+        else { this.randomMove() };
     },
 
     onBeginContact: function (contact, selfCollider, otherCollider) {
@@ -108,20 +126,52 @@ cc.Class({
     },
 
     onCollisionEnter: function (other, self) {
-        // console.log(other.node.getComponent(cc.PhysicsPolygonCollider).tag);
-        if (other.node.getComponent(cc.PhysicsPolygonCollider)) {
+        if (other.node.getComponent(cc.PhysicsPolygonCollider) && this.lockHp) {
             if (other.node.getComponent(cc.PhysicsPolygonCollider).tag === 200) {
+                console.log(this.hp);
                 this.hp -= 10
-                this.progressHp.progress = this.hp / 3000;
+                this.progressHp.progress = this.hp / gameData.storeHouse.json["boss"]["boss1"]["bossHp"];
+                cc.Tween.stopAllByTarget(this.quan)
+                cc.tween(this.quan)
+                    .call(() => { this.quan.active = true; cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = false; cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = true })
+                    .delay(0.05)
+                    .call(() => {
+                        this.quan.active = false;
+                    })
+                    .start()
                 other.node.destroy();
-                if (this.hp <= 0) {
-                    this.node.getComponent(cc.CircleCollider).active = false;
-                    gameData.bossIsDied = true;
+                if (this.hp <= 0 && this.lockHp) {
+                    this.lockHp = false;
+                    if (this.nowHpCount >= this.hpCount) {
+                        this.node.getComponent(cc.CircleCollider).active = false;
+                        gameData.bossIsDied = true;
+                        this.bossOver();
+                    } else {
+                        this.nowHpCount += 1;
+                        this.resumeHp();
+                    }
                 }
             }
+        } else {
+            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = true;
+            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = false
         }
-
     },
+
+    // 血量回复100
+    resumeHp() {
+        this.schedule(this.addHp, 0.01)
+    },
+    addHp() {
+        if (this.progressHp.progress >= 1) {
+            this.unschedule(this.addHp)
+            this.progressHp.progress = 1;
+            this.hp = gameData.storeHouse.json["boss"]["boss1"]["bossHp"]
+            this.scheduleOnce(() => { this.lockHp = true }, 0.5)
+        }
+        this.progressHp.progress += 0.01
+    },
+
 
     bossOver() {
         gameData.BulletControl.stopShoot();
@@ -146,9 +196,6 @@ cc.Class({
     },
 
     update(dt) {
-        if (gameData.bossIsDied) {
-            this.bossOver();
-        }
         if (this.hero.x <= this.node.parent.x) {
             this.node.scaleX = 1;
         } else {

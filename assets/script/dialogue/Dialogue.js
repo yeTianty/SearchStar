@@ -64,6 +64,7 @@ cc.Class({
         // 当前关卡内容条数
         this.contentCount = this.levelList[gameData.level[this.nowLevel]];
 
+
     },
     nextDialogue() {
         // 当对话播放完才可以点击
@@ -84,13 +85,13 @@ cc.Class({
         // }
 
         let level = gameData.level[this.nowLevel];
-        if (level === "first" || level === "four") {
-            if(this.state){
-                this.state = false;
-                level = null
-                this.isSelect();
-            }
-            cc.log(92)
+        if ((level === "first" || level === "four") && this.state) {
+            this.state = false;
+            this.dialogueIndex += 1;
+            this.contentCount = 1;
+            cc.log(this.dialogueIndex)
+            cc.log(this.contentCount)
+            this.isSelect();
         } else {
             // 当前关卡内容条数
             if (this.dialogueIndex < this.contentCount) {
@@ -101,15 +102,13 @@ cc.Class({
                 this.nowDialogue = this.levelDialogueData.dialogue;
                 this.setContentData(this.dialogueIndex, this.nowDialogue, this.levelDialogueData);
             } else {
-                cc.log(95)
                 // 当前关卡内容播放完
                 // if (level === "first") {
                 //     cc.director.loadScene("teach");
                 // }
                 if (level === "third") {
-                    // cc.director.loadScene("teach");
                     cc.find("Canvas/camera/dialogue").active = false;
-                    gameData.BulletControl.goShoot();
+                    gameData.gameMain.openShoot()
                 }
                 this.node.active = false;
             }
@@ -139,6 +138,7 @@ cc.Class({
         this.hero.scale = 1;
         this.medium.scale = 1;
         this.wang.scale = 1;
+        this.dazi(nowDialogue);
         if (this.nameTxt.string === "赫卡提亚·雪乃") {
             this.hero.getComponent(cc.Sprite).spriteFrame = this.heroSkin[levelDialogueData["frame"]];
             this.hero.active = true;
@@ -169,7 +169,7 @@ cc.Class({
         }
 
         /**给对话框的说话内容赋值 */
-        this.dazi(nowDialogue);
+        // this.dazi(nowDialogue);
         // this.schedule(() => {
         //     if (this.contentTxt.string.length < nowDialogue.length) {
         //         this.contentTxt.string = nowDialogue.slice(0, this.contentTxt.string.length + 1);
@@ -178,8 +178,9 @@ cc.Class({
 
         //     }
         // }, 0.1, nowDialogue.length + 1, 0.1)
-
-        if (num < this.contentCount) {
+        if (num <= this.contentCount) {
+            this.contentTxt.string = "";
+        } else if (num > this.contentCount) {
             this.contentTxt.string = "";
         } else {
             this.contentTxt.string = nowDialogue;

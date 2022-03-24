@@ -37,14 +37,14 @@ cc.Class({
 
     shootModel() {
         let random = Math.random() * 5 | 0;
-        // let random = 2
+        // let random = 4
         switch (random) {
             case 0:
-                gameData.Boss1.centerMove();
+                gameData.Boss1.randomShootModel();
                 this.shootType1();
                 break;
             case 1:
-                gameData.Boss1.returnCenter()
+                gameData.Boss1.randomShootModel()
                 this.shootType2();
                 break;
             case 2:
@@ -52,11 +52,11 @@ cc.Class({
                 this.shootType3();
                 break;
             case 3:
-                gameData.Boss1.randomMove();
+                gameData.Boss1.randomShootModel();
                 this.shootType4();
                 break;
             case 4:
-                gameData.Boss1.randomMove();
+                gameData.Boss1.randomShootModel();
                 this.shootType5();
                 break;
             default:
@@ -156,8 +156,6 @@ cc.Class({
             .call(() => { xLine.parent.active = true })
             .to(2, { angle: 480 * dir })
             .call(() => { xLine.parent.active = false; xLine.destroy() })
-            // .delay(0.1)
-            // .call(() => {  })
             .start()
     },
     // 射击模式5
@@ -175,8 +173,9 @@ cc.Class({
         }
         let bat = cc.instantiate(gameData.storeHouse.prefab["bat"]);
         let com = bat.addComponent("Bullet")
-        com.curveFly();
         bat.setPosition(cc.v2(this.bossNode.x + this.i * -200, (this.bossNode.y + this.j * 200)));
+        let dir = bat.x > this.bossNode.x ? 1 : -1;
+        com.curveFly(dir);
         this.node.addChild(bat);
     },
 

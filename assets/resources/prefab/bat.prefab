@@ -400,9 +400,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_type": 0,
+    "_type": 2,
     "_allowSleep": true,
-    "_gravityScale": 0,
+    "_gravityScale": 0.1,
     "_linearDamping": 0,
     "_angularDamping": 0,
     "_linearVelocity": {

@@ -10,7 +10,6 @@ cc.Class({
 
     onLoad() {
         gameData.gameMain = this;
-        // this.node.on('goShoot', this.openShoot, this);
     },
 
     start() {
@@ -45,10 +44,14 @@ cc.Class({
         gameData.hero.heroAdmission();
     },
 
-    
     // 开始射击
     openShoot() {
         gameData.BulletControl.goShoot();
+    },
+
+    // 停止射击
+    stopShoot() {
+        gameData.BulletControl.stopShoot();
     }
 
     // update (dt) {},

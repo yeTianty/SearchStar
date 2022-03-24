@@ -66,7 +66,7 @@ cc.Class({
 
         if (!this.isDash && !this.beHited && otherCollider.tag === 500) {
             this.beHit()
-            cc.log("HP-1")
+            // cc.log("HP-1")
 
         }
 
@@ -75,7 +75,7 @@ cc.Class({
     update(dt) {
         this.node.setPosition(this.playerPos)
         if (this.isDash || this.beHited) {
-            cc.log("无敌状态");
+            // cc.log("无敌状态");
         }
     },
 });

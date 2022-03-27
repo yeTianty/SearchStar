@@ -1,0 +1,232 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "starBullet",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.25,
+  "sample": 60,
+  "speed": 0.3,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "1": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.03333333333333333,
+              "value": 5
+            },
+            {
+              "frame": 0.06666666666666667,
+              "value": 3
+            },
+            {
+              "frame": 0.1,
+              "value": -3
+            }
+          ]
+        }
+      },
+      "J_GC_13": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.1,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0.5,
+                "y": 0.5
+              }
+            }
+          ],
+          "opacity": [],
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.1,
+              "value": 10
+            }
+          ]
+        }
+      },
+      "J_GX_3": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0.1,
+              "value": 0
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.1,
+              "value": true
+            }
+          ]
+        }
+      },
+      "J_GC_12 - 副本": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0.1,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.13333333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.3,
+                "y": 1.3
+              }
+            }
+          ]
+        }
+      },
+      "J_GC_9": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.13333333333333333,
+              "value": true
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": false
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": true
+            }
+          ],
+          "scale": [
+            {
+              "frame": 0.13333333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            },
+            {
+              "frame": 0.16666666666666666,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1.2,
+                "y": 1.2
+              }
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        }
+      },
+      "J_GX_60": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.13333333333333333,
+              "value": true
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": false
+            }
+          ],
+          "scale": [
+            {
+              "frame": 0.13333333333333333,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0.6,
+                "y": 0.6
+              }
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ]
+        }
+      },
+      "J_GC_3": {
+        "props": {
+          "scale": [
+            {
+              "frame": 0.18333333333333332,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 0.5,
+                "y": 0.5
+              }
+            },
+            {
+              "frame": 0.25,
+              "value": {
+                "__type__": "cc.Vec2",
+                "x": 1,
+                "y": 1
+              }
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 0.18333333333333332,
+              "value": true
+            },
+            {
+              "frame": 0.25,
+              "value": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

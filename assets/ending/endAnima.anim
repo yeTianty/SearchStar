@@ -1,0 +1,221 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "endAnima",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 2.5,
+  "sample": 60,
+  "speed": 0.2,
+  "wrapMode": 1,
+  "curveData": {
+    "paths": {
+      "1": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": false
+            }
+          ]
+        }
+      },
+      "2": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": false
+            }
+          ]
+        }
+      },
+      "1/sis1": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            },
+            {
+              "frame": 1,
+              "value": false
+            }
+          ],
+          "angle": [
+            {
+              "frame": 0,
+              "value": 5
+            },
+            {
+              "frame": 0.3333333333333333,
+              "value": -5
+            },
+            {
+              "frame": 0.6666666666666666,
+              "value": 5
+            },
+            {
+              "frame": 1,
+              "value": -5
+            }
+          ]
+        }
+      },
+      "2/bro": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            }
+          ]
+        }
+      },
+      "1/ending": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": true
+            },
+            {
+              "frame": 1,
+              "value": false
+            }
+          ]
+        }
+      },
+      "2/sis": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            }
+          ],
+          "angle": [
+            {
+              "frame": 1,
+              "value": 5
+            },
+            {
+              "frame": 1.1666666666666667,
+              "value": -5
+            },
+            {
+              "frame": 1.3333333333333333,
+              "value": 5
+            },
+            {
+              "frame": 1.5,
+              "value": -5
+            },
+            {
+              "frame": 1.6666666666666667,
+              "value": 5
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": -5
+            }
+          ]
+        }
+      },
+      "2/medicine": {
+        "props": {
+          "position": [
+            {
+              "frame": 1,
+              "value": [
+                261.235,
+                -155.189,
+                0
+              ]
+            },
+            {
+              "frame": 1.7833333333333334,
+              "value": [
+                -271.581,
+                162.949,
+                0
+              ]
+            }
+          ],
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            }
+          ]
+        }
+      },
+      "2/ending": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1,
+              "value": true
+            }
+          ]
+        }
+      },
+      "3/bg": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": true
+            },
+            {
+              "frame": 2.5,
+              "value": false
+            }
+          ]
+        }
+      },
+      "3/ending": {
+        "props": {
+          "active": [
+            {
+              "frame": 0,
+              "value": false
+            },
+            {
+              "frame": 1.8333333333333333,
+              "value": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

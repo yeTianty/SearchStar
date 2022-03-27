@@ -5,20 +5,22 @@ cc.Class({
     properties: {
         dash: cc.Prefab,
         hpLayer: cc.Node,
+        sound: [cc.AudioSource]
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad: function () {
-        gameData.hero = this
+        gameData.hero = this;
         // 键盘监听
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
 
+        this.node.on("dead", this.dead, this);
     },
 
     start() {
-        this.hp = 10;
+        this.hp = 6;
         this.jumpW = true;
         this.jumpS = true;
         this.shiftDown = true;
@@ -31,14 +33,21 @@ cc.Class({
         this.hitBox = this.node.getChildByName("player").getChildByName("body").getChildByName("hitBox").addComponent("hit")
         this.hitBox.init(this.hp)
         this.dir = 1;
+        this.skillUsing = true;
         this.createHp();
     },
 
     createHp() {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.hp; i++) {
             let hpSkin = cc.instantiate(gameData.storeHouse.prefab["hpSkin"])
             this.hpLayer.addChild(hpSkin);
         }
+    },
+
+    dead() {
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        this.speed = 0;
     },
 
     cantChangeDir() {
@@ -49,24 +58,10 @@ cc.Class({
         this.changeDir = true
     },
 
-    /*************************人物入场************************** */
-    heroAdmission() {
-        cc.Tween.stopAllByTarget(this.node);
-        cc.tween(this.node)
-            .call(() => { this.node.scale = 0 })
-            .to(1, { scale: 1, angle: -720 })
-            // .call(() => { this.node.scaleX = -1 })
-            // 测试，将开始进入战斗放入入场之后2s开始
-            .delay(2)
-            .start()
-
-    },
-
     /***************************键盘监听相关*********************************** */
 
 
     onKeyDown: function (event) {
-
         //向左移动
         if (event.keyCode === cc.macro.KEY.a) {
             this.keyA = true;
@@ -77,7 +72,6 @@ cc.Class({
             cc.Tween.stopAllByTarget(this.hero)
             this.speed = -10;
             this.ang = 5
-
         }
 
         //向右移动
@@ -98,14 +92,34 @@ cc.Class({
             this.jumpW = false;
         }
 
+        //增加重力
+        if (event.keyCode === cc.macro.KEY.s) {
+            if (this.isDestroy) { return };
+            if (!this.jumpW || this.jumpCount === 2) { return };
+            this.node.getComponent(cc.RigidBody).gravityScale = 50;
+            this.hitBox.changeState();
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    let dash = cc.instantiate(this.dash)
+                    dash.getComponent("dash").init(this.node.children[0])
+                    dash.parent = this.node.parent;
+                    dash.x = this.node.x;
+                    dash.y = this.node.y;
+                }, i * 50)
+            }
+            this.sound[2].play();
+        }
+
         //跳跃
         if (event.keyCode === cc.macro.KEY.space) {
             if (this.jumpS && this.jumpCount > 0) {
                 this.node.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, 400)
                 this.jumpCount -= 1;
                 this.jumpS = false;
+                this.sound[0].play();
             }
         }
+
 
         //使用冲刺
         if (event.keyCode === cc.macro.KEY.shift) {
@@ -115,6 +129,7 @@ cc.Class({
                 this.shiftSpeed = 30;
                 this.hero.angle = -45 * this.dir;
                 for (let i = 0; i < 5; i++) {
+                    if (this.isDestroy) { break };
                     setTimeout(() => {
                         let dash = cc.instantiate(this.dash)
                         dash.getComponent("dash").init(this.node.children[0])
@@ -133,14 +148,32 @@ cc.Class({
                 this.scheduleOnce(() => {
                     this.shiftDown = true;
                 }, 0.8)
+                this.sound[1].play();
             }
         }
 
         //使用技能
         if (event.keyCode === cc.macro.KEY.e) {
-            this.node.getComponent("test").useSkill();
+            if (this.skillUsing) {
+                this.skillUsing = false;
+                this.scheduleOnce(() => { this.skillUsing = true }, gameData.skillCD)
+                this.node.getComponent("test").useSkill();
+                gameData.skillLayer.changeState();
+                this.sound[3].play();
+            }
+
         }
 
+        if (event.keyCode === cc.macro.KEY.g) {
+            this.hitBox.wuDi();
+            this.sound[4].play();
+
+        }
+    },
+
+    //切换关卡时禁用残影
+    enterLevel() {
+        this.isDestroy = true;
     },
 
     onKeyUp: function (event) {
@@ -160,6 +193,10 @@ cc.Class({
         }
         if (event.keyCode === cc.macro.KEY.w) {
             this.jumpW = true
+            this.node.getComponent(cc.RigidBody).gravityScale = 5;
+        }
+
+        if (event.keyCode === cc.macro.KEY.s) {
             this.node.getComponent(cc.RigidBody).gravityScale = 5;
         }
 
@@ -188,12 +225,6 @@ cc.Class({
         if (otherCollider.tag === 400) {
             this.jumpCount = 2;
         }
-    },
-
-    //节点销毁时取消键盘监听事件
-    onDestroy() {
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     },
 
     //移动

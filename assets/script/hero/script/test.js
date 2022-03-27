@@ -4,39 +4,26 @@ cc.Class({
     properties: {
         bullet: cc.Prefab,
         bulletPar: cc.Node,
-        hand: cc.Node,
+        GameOver: cc.Node
     },
 
 
     onLoad() {
         cc.director.getPhysicsManager().enabled = true;
-
-        cc.director.getPhysicsManager().debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
-            cc.PhysicsManager.DrawBits.e_pairBit |
-            cc.PhysicsManager.DrawBits.e_centerOfMassBit |
-            cc.PhysicsManager.DrawBits.e_jointBit |
-            cc.PhysicsManager.DrawBits.e_shapeBit;
-
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        // manager.enabledDebugDraw = true;
-
-        // this.node.parent.on("touchstart", this.onTouchMove, this);
-        // this.node.parent.on("touchmove", this.onTouchMove, this);
-        // this.node.parent.on("touchend", this.onTouchEnd, this);
-
         gameData.camera.on("touchstart", this.onTouchMove, this);
         gameData.camera.on("touchmove", this.onTouchMove, this);
         gameData.camera.on("touchend", this.onTouchEnd, this);
-
+        this.node.on("dead", this.dead, this);
         cc.game.setFrameRate(60)
-
     },
 
     start() {
-        this.shoot = this.node.getChildByName("player").getChildByName("body").getChildByName("righthand")
+        this.node.children[0].opacity = 255;
         this.hero = this.node
         this.dir = 1;
+        this.died = gameData.dead;
         this.shootSpeed = 0.1;
         this.isCanShoot = false;
         this.isShoot = true;
@@ -44,20 +31,67 @@ cc.Class({
     },
 
     useSkill() {
-        if (this.skillUsing) {
-            this.skillUsing = false;
-            this.shootSpeed = 0.06;
-            this.scheduleOnce(() => { this.shootSpeed = 0.1 }, 3)
-            this.scheduleOnce(() => { this.skillUsing = true }, 10)
-        }
+        // if (this.skillUsing) {
+        // this.skillUsing = false;
+        this.shootSpeed = 0.01;
+        this.scheduleOnce(() => { this.shootSpeed = 0.1 }, 3)
+        // this.scheduleOnce(() => { this.skillUsing = true }, 5)
+        // }
 
     },
 
+    dead() {
+        gameData.camera.off("touchstart", this.onTouchMove, this);
+        gameData.camera.off("touchmove", this.onTouchMove, this);
+        gameData.camera.off("touchend", this.onTouchEnd, this);
+        if (gameData.nowScene === "boss1") {
+            gameData.BulletControl.stopShoot();
+            cc.find("Canvas/bulletLayer").destroyAllChildren();
+        } else if (gameData.nowScene === "boss2") {
+            gameData.BulletControl2.stopShoot();
+            cc.find("Canvas/bulletLayer").destroyAllChildren();
+        }
+
+        this.gameOver()
+        this.onTouchEnd();
+
+    },
+
+    gameOver() {
+        this.deadAnima = this.node.getComponent(cc.Animation)
+        this.node.children[0].opacity = 0;
+        this.deadAnima.play("dead")
+        this.deadAnima.on("finished", this.onFinished, this);
+
+    },
+
+    onFinished() {
+        // this.deadAnima.off("finished", this.onFinished, this);
+        this.GameOver.active = true;
+
+    },
+
+    exit() {
+        this.GameOver.active = false;
+        cc.director.loadScene("start");
+    },
+    continue() {
+        this.GameOver.active = false;
+        cc.director.loadScene(gameData.nowScene);
+    },
+    // continue1() {
+    //     this.GameOver.active = false
+    //     cc.director.loadScene("boss1");
+    //     // gameData.loading.thirdStart();
+    // },
+    // continue2() {
+    //     this.GameOver.active = false
+    //     cc.director.loadScene("boss2");
+    // },
+
     onTouchStart(e) {
         this.isCanShoot = true;
-
         this.event = e;
-
         this.node.getComponent("hero").cantChangeDir();
     },
 
@@ -92,8 +126,8 @@ cc.Class({
 
 
     onTouchEnd() {
-        cc.Tween.stopAllByTarget(this.hand.children[0])
-        cc.tween(this.hand.children[0])
+        cc.Tween.stopAllByTarget(this.bulletPar)
+        cc.tween(this.bulletPar)
             .to(0.3, { opacity: 0 })
             .start();
         this.isCanShoot = false;
@@ -139,7 +173,7 @@ cc.Class({
         let bullet = cc.instantiate(this.bullet)
         bullet.angle = angle
         bullet.addComponent("bullet").init(unitV);
-        this.bulletPar.parent.parent.addChild(bullet);
+        this.bulletPar.parent.addChild(bullet);
 
     },
 

@@ -1,0 +1,329 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "boss2Anima",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 22,
+  "curveData": {
+    "paths": {
+      "head/rainSan": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 16.083
+            },
+            {
+              "frame": 0.5,
+              "value": -25
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": 10
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -10
+            },
+            {
+              "frame": 0.5,
+              "value": -20
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace31_31": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -95
+            },
+            {
+              "frame": 0.5,
+              "value": -85
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace30_30": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -110
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace32_32": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -110
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace36_36": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -100
+            },
+            {
+              "frame": 0.5,
+              "value": -90
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace37_37": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -105
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace29_29": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -105
+            }
+          ]
+        }
+      },
+      "head/wing/rightWing/BossFace41_41": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -80
+            },
+            {
+              "frame": 0.5,
+              "value": -100
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace33_33": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -80
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace38_38": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -105
+            },
+            {
+              "frame": 0.5,
+              "value": -85
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace39_39": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -75
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace43_43": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -105
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace44_44": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -70
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace45_45": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -70
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace46_46": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -90
+            },
+            {
+              "frame": 0.5,
+              "value": -100
+            }
+          ]
+        }
+      },
+      "head/wing/leftWing/BossFace54_54": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -80
+            },
+            {
+              "frame": 0.5,
+              "value": -90
+            }
+          ]
+        }
+      },
+      "head/rightArm": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -13.759
+            },
+            {
+              "frame": 0.5,
+              "value": -25
+            }
+          ]
+        }
+      },
+      "head/sitDown/sitDown1": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 0
+            },
+            {
+              "frame": 0.5,
+              "value": -20
+            }
+          ]
+        }
+      },
+      "head/sitDown/sitDown2": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -25,
+              "curve": [
+                0.4565995525727069,
+                0.43702460850111857,
+                0.5489932885906039,
+                0.5294183445190156
+              ]
+            },
+            {
+              "frame": 0.5,
+              "value": 0
+            }
+          ]
+        }
+      },
+      "head/face/eye/eye02": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": []
+          }
+        }
+      },
+      "head/face/eye/eye01": {
+        "comps": {
+          "cc.Sprite": {
+            "spriteFrame": []
+          }
+        }
+      }
+    }
+  },
+  "events": []
+}

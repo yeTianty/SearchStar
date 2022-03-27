@@ -10,14 +10,14 @@ cc.Class({
 
     onLoad() {
         gameData.gameMain = this;
+        cc.audioEngine.playMusic(gameData.storeHouse.sound["leimi"])
+        cc.audioEngine.setMusicVolume(0.7)
     },
 
     start() {
+        gameData.nowScene = "boss1"
         cc.tween(this.node)
-            .delay(1)
-            .call(() => { cc.find("Canvas/HeroLayer/hero").active = true; this.openHeroAnima() })
-            .delay(1.5)
-            .call(() => { cc.find("Canvas/BossLayer/pos/boss1").active = true; this.openBossAnima() })
+            .call(() => { cc.find("Canvas/BossLayer/pos").active = true; this.openBossAnima() })
             .delay(2)
             .call(() => { this.openDialogue() })
             .start()
@@ -52,7 +52,7 @@ cc.Class({
     // 停止射击
     stopShoot() {
         gameData.BulletControl.stopShoot();
-    }
+    },
 
-    // update (dt) {},
+    update(dt) { },
 });

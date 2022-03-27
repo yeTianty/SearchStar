@@ -10,7 +10,6 @@
   "excluded-modules": [
     "3D Physics/Builtin"
   ],
-  "start-scene": "49fff8d6-22df-4e57-a12c-0e8268565910",
   "preview-port": 7456,
   "design-resolution-width": 960,
   "design-resolution-height": 640,
@@ -33,5 +32,7 @@
     "live": {
       "enable": false
     }
-  }
+  },
+  "start-scene": "49fff8d6-22df-4e57-a12c-0e8268565910",
+  "last-module-event-record-time": 1648363512723
 }

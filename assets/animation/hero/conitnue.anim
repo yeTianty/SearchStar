@@ -1,0 +1,75 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "conitnue",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 22,
+  "curveData": {
+    "paths": {
+      "New Sprite(Splash)/找东西的笨蛋1": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -5,
+              "curve": "constant"
+            },
+            {
+              "frame": 0.5,
+              "value": 5
+            }
+          ]
+        }
+      },
+      "New Sprite(Splash)/暂停界面 继续按钮 常态": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -5,
+              "curve": "constant"
+            },
+            {
+              "frame": 0.5,
+              "value": 5
+            }
+          ]
+        }
+      },
+      "New Sprite(Splash)/暂停界面 战斗重启按钮 常规": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": -5,
+              "curve": "constant"
+            },
+            {
+              "frame": 0.5,
+              "value": 5
+            }
+          ]
+        }
+      },
+      "New Sprite(Splash)/暂停界面 退出按钮 常态": {
+        "props": {
+          "angle": [
+            {
+              "frame": 0,
+              "value": 5,
+              "curve": "constant"
+            },
+            {
+              "frame": 0.5,
+              "value": -5
+            }
+          ]
+        }
+      }
+    }
+  },
+  "events": []
+}

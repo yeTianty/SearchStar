@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>fire06_06.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{228,204},{75,165}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,165}}</string>
+				<key>sourceSize</key>
+				<string>{75,165}</string>
+			</dict>
+
+			<key>fire10_10.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{228,0},{75,203}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,203}}</string>
+				<key>sourceSize</key>
+				<string>{75,203}</string>
+			</dict>
+
+			<key>fire12_12.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{152,199},{75,190}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,190}}</string>
+				<key>sourceSize</key>
+				<string>{75,190}</string>
+			</dict>
+
+			<key>fire13_13.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{304,0},{75,200}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,200}}</string>
+				<key>sourceSize</key>
+				<string>{75,200}</string>
+			</dict>
+
+			<key>fire14_14.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{76,180},{75,149}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,149}}</string>
+				<key>sourceSize</key>
+				<string>{75,149}</string>
+			</dict>
+
+			<key>fire15_15.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{76,179}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{76,179}}</string>
+				<key>sourceSize</key>
+				<string>{76,179}</string>
+			</dict>
+
+			<key>fire16_16.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,180},{75,180}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,180}}</string>
+				<key>sourceSize</key>
+				<string>{75,180}</string>
+			</dict>
+
+			<key>fire18_18.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{152,0},{75,198}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false/>
+				<key>sourceColorRect</key>
+				<string>{{0,0},{75,198}}</string>
+				<key>sourceSize</key>
+				<string>{75,198}</string>
+			</dict>
+
+		</dict>
+
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>size</key>
+			<string>{380,390}</string>
+			<key>textureFileName</key>
+			<string>fire.png</string>
+			</dict>
+		</dict>
+</plist>

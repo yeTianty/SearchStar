@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "4c03fe9f-0392-447e-bd6b-2d3424154cd4",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1522,
+  "height": 1833,
+  "platformSettings": {},
+  "subMetas": {
+    "houmianyulogo2": {
+      "ver": "1.0.4",
+      "uuid": "5d04efb9-6f42-4b22-afc8-d5f4567a6cdc",
+      "rawTextureUuid": "4c03fe9f-0392-447e-bd6b-2d3424154cd4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1522,
+      "height": 1833,
+      "rawWidth": 1522,
+      "rawHeight": 1833,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

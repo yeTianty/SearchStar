@@ -9,25 +9,24 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        this.loadLocalRes("prefab", cc.Prefab, "prefab");
+        this.loadLocalRes("frame", cc.SpriteFrame, "frame");
+        this.loadLocalRes("json", cc.JsonAsset, "json");
+        this.loadLocalRes("sound", cc.AudioClip, "sound");
+        //已加载的资源 计数
+        this.loadCount = 0;
         gameData.loading = this
         this.barValue = 0
-        // this.totalRes = Object.keys(gameData.storeHouse).length;
-        this.loadCount = 0;
+        this.totalRes = Object.keys(gameData.storeHouse).length;
         // 开启碰撞
         cc.director.getPhysicsManager().enabled = true;
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw = true;
         cc.game.setFrameRate(60)
     },
 
     start() {
-        this.loadLocalRes("prefab", cc.Prefab, "prefab");
-        this.loadLocalRes("frame", cc.SpriteFrame, "frame");
-        this.loadLocalRes("json", cc.JsonAsset, "json");
-        //已加载的资源 计数
-        this.loadCount = 0;
-        // this.schedule(this.updateLoadingProgress, 0.01);
+        this.schedule(this.updateLoadingProgress, 0.01);
     },
 
     loadLocalRes(resPath, resType, savePath) {
@@ -45,13 +44,27 @@ cc.Class({
             }
         });
     },
-
+    // boss1
     test() {
-        cc.director.loadScene("play")
+        cc.director.loadScene("boss1")
+    },
+    // boss2
+    boss2() {
+        cc.director.loadScene("boss2")
     },
 
     startClick() {
+        cc.director.loadScene("story");
+    },
+
+    startStart() {
         cc.director.loadScene("dialogue");
+    },
+    startEnd() {
+        cc.director.loadScene("teaching")
+    },
+    startEnd2() {
+        cc.director.loadScene("teaching2")
     },
     firstIsPass() {
         gameData.nowLevel = 2;
@@ -67,7 +80,7 @@ cc.Class({
 
     secondStart() {
         gameData.nowLevel = 3;
-        cc.director.loadScene("dialogue");
+        cc.find("Canvas/camera/dialogue6").active = true;
     },
 
     thirdStart() {
@@ -78,29 +91,34 @@ cc.Class({
     fourIsPass() {
         gameData.nowLevel = 5;
         gameData.isPass = true;
-        cc.director.loadScene("dialogue");
+        cc.find("Canvas/camera/dialogue2").active = true;
     },
     fourNoPass() {
         gameData.nowLevel = 5;
         gameData.isPass = false;
-        cc.director.loadScene("dialogue");
+        cc.find("Canvas/camera/dialogue3").active = true;
     },
     end() {
+        cc.director.loadScene("end")
         gameData.nowLevel = 6;
-        cc.director.loadScene("dialogue");
     },
+
 
 
     // 进度条
-    // updateLoadingProgress() {
-    //     this.barValue += 0.3;
-    //     this.loadProgress.progress = this.barValue / 100;
-    //     this.person.x += 1.72
-    //     if (this.loadProgress.progress >= 1 && this.loadCount === this.totalRes) {
-    //         this.person.getComponent(cc.Animation).stop("walk");
-    //         cc.director.loadScene("login");
-    //     }
-    // }
+    updateLoadingProgress() {
+        if (this.loadCount === this.totalRes) {
+            cc.tween(cc.find("Canvas/loading"))
+                .to(0.1, { scaleY: 0 })
+                .call(() => {
+                    cc.find("Canvas/loading").active = false;
+                    cc.audioEngine.playMusic(gameData.storeHouse.sound["bgMusic"])
+                })
+                .start();
+        }
+    }
 
-    // update (dt) {},
+    // update(dt) {
+
+    // },
 });

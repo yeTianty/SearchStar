@@ -20,9 +20,11 @@ cc.Class({
     onLoad() {
         this.node.on("touchend", this.nextDialogue, this);
         cc.game.setFrameRate(60)
+
     },
 
     start() {
+        cc.log(this.name)
         this.init();
         this.nextDialogue();
     },
@@ -63,6 +65,7 @@ cc.Class({
         }
         // 当前关卡内容条数
         this.contentCount = this.levelList[gameData.level[this.nowLevel]];
+        cc.log(this.contentCount)
 
 
     },
@@ -71,26 +74,11 @@ cc.Class({
         if (!this.dialogueEnd) return;
         this.dialogueEnd = false;
 
-        // 当前关卡内容条数
-        // if (this.dialogueIndex < this.contentCount) {
-        //     this.dialogueIndex += 1;
-        //     // 当前关卡所有对话内容 
-        //     this.levelDialogueData = this.dialogueData[gameData.level[this.nowLevel] + "-" + this.dialogueIndex];
-        //     // 当前关卡对话内容 段落+条数
-        //     this.nowDialogue = this.levelDialogueData.dialogue;
-        //     this.setContentData(this.dialogueIndex, this.nowDialogue, this.levelDialogueData);
-        // } else {
-        //     // 当前关卡内容播放完
-        //     this.node.active = false;
-        // }
-
         let level = gameData.level[this.nowLevel];
         if ((level === "first" || level === "four") && this.state) {
             this.state = false;
             this.dialogueIndex += 1;
             this.contentCount = 1;
-            cc.log(this.dialogueIndex)
-            cc.log(this.contentCount)
             this.isSelect();
         } else {
             // 当前关卡内容条数
@@ -103,12 +91,23 @@ cc.Class({
                 this.setContentData(this.dialogueIndex, this.nowDialogue, this.levelDialogueData);
             } else {
                 // 当前关卡内容播放完
-                // if (level === "first") {
-                //     cc.director.loadScene("teach");
-                // }
+                if (level === "start") {
+                    gameData.loading.startEnd()
+                    cc.audioEngine.playMusic(gameData.storeHouse.sound["teaching"])
+                }
+                if (level === "first") {
+                    cc.director.loadScene("boss2")
+                }
+                if (level === "second") {
+                    gameData.game2.openShoot()
+                    this.node.parent.destroy()
+                }
                 if (level === "third") {
                     cc.find("Canvas/camera/dialogue").active = false;
                     gameData.gameMain.openShoot()
+                }
+                if (level === "end") {
+                    cc.find("Canvas/end").active = true;
                 }
                 this.node.active = false;
             }
@@ -138,7 +137,6 @@ cc.Class({
         this.hero.scale = 1;
         this.medium.scale = 1;
         this.wang.scale = 1;
-        this.dazi(nowDialogue);
         if (this.nameTxt.string === "赫卡提亚·雪乃") {
             this.hero.getComponent(cc.Sprite).spriteFrame = this.heroSkin[levelDialogueData["frame"]];
             this.hero.active = true;
@@ -157,7 +155,6 @@ cc.Class({
                 this.hero.active = false;
                 this.medium.active = false;
                 this.wang.active = false;
-
                 // 巫女的属性
             } else {
                 this.medium.getComponent(cc.Sprite).spriteFrame = this.mediumSkin[levelDialogueData["frame"]];
@@ -167,24 +164,12 @@ cc.Class({
                 cc.tween(this.medium).to(0.5, { scale: 1.2 }).start()
             }
         }
-
-        /**给对话框的说话内容赋值 */
-        // this.dazi(nowDialogue);
-        // this.schedule(() => {
-        //     if (this.contentTxt.string.length < nowDialogue.length) {
-        //         this.contentTxt.string = nowDialogue.slice(0, this.contentTxt.string.length + 1);
-        //     } else {
-        //         this.dialogueEnd = true;
-
-        //     }
-        // }, 0.1, nowDialogue.length + 1, 0.1)
-        if (num <= this.contentCount) {
-            this.contentTxt.string = "";
-        } else if (num > this.contentCount) {
+        if (num < this.contentCount) {
             this.contentTxt.string = "";
         } else {
             this.contentTxt.string = nowDialogue;
         }
+        this.dazi(nowDialogue);
 
     },
 
@@ -192,6 +177,8 @@ cc.Class({
         this.schedule(() => {
             if (this.contentTxt.string.length < nowDialogue.length) {
                 this.contentTxt.string = nowDialogue.slice(0, this.contentTxt.string.length + 1);
+                cc.audioEngine.setEffectsVolume(0.7);
+                cc.audioEngine.playEffect(gameData.storeHouse.sound["dazi"])
             } else {
                 this.dialogueEnd = true;
             }

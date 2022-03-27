@@ -13,6 +13,7 @@ cc.Class({
         let bossData = gameData.storeHouse.json["boss"]["boss1"]
         this.hp = bossData["bossHp"];
         this.hpCount = bossData["hpCount"];
+        // gameData.nowScene = "boss1"
     },
 
     start() {
@@ -22,6 +23,7 @@ cc.Class({
         this.quan = cc.find("Canvas/BossLayer/pos/quan")
         this.nowHpCount = 1;
         this.lockHp = true
+        this.ss = true
     },
 
     /********boss入场********** */
@@ -30,15 +32,13 @@ cc.Class({
         cc.tween(this.node)
             .call(() => { this.node.scale = 0 })
             .to(1, { scale: 1, angle: 720 })
-            .call(() => { this.anima.play("boss1") })
+            .call(() => { this.anima.play() })
             // 测试，将开始进入战斗放入入场之后2s开始
             .delay(2)
             .call(() => {
                 this.bgAngle();
-
             })
             .start()
-
     },
 
     /**************开始进入战斗时*************** */
@@ -56,7 +56,7 @@ cc.Class({
     leftGoRight() {
         cc.Tween.stopAllByTarget(this.node.parent)
         cc.tween(this.node.parent)
-            .to(1, { position: cc.v2(-cc.find("Canvas/camera").width * 1 / 3, 300) })
+            .to(0.01, { position: cc.v2(-cc.find("Canvas/camera").width * 1 / 3, 300) })
             .to(2, { position: cc.v2(cc.find("Canvas/camera").width * 1 / 3, 300) })
             .start()
     },
@@ -66,7 +66,7 @@ cc.Class({
         let randomTime = Math.random() * 5
         cc.Tween.stopAllByTarget(this.node.parent)
         cc.tween(this.node.parent)
-            .to(randomTime, { position: cc.v2(cc.find("Canvas/camera").width * 1 / 3, 300) })
+            .to(0.01, { position: cc.v2(cc.find("Canvas/camera").width * 1 / 3, 300) })
             .to(randomTime, { position: cc.v2(-cc.find("Canvas/camera").width * 1 / 3, 300) })
             .start()
     },
@@ -79,7 +79,6 @@ cc.Class({
             .delay(3)
             .start()
     },
-
     // 随机移动
     randomMove() {
         let randomX = Math.random() * cc.find("Canvas/camera").width * 2 / 3 - cc.find("Canvas/camera").width / 3
@@ -90,12 +89,10 @@ cc.Class({
             .to(randomTime, { position: cc.v2(randomX, randomY) })
             .start()
     },
-
     // 停止原地
     stopMove() {
         cc.Tween.stopAllByTarget(this.node.parent);
     },
-
     // boss背景出现并旋转
     bgAngle() {
         this.bossBg.active = true
@@ -121,12 +118,18 @@ cc.Class({
     onCollisionEnter: function (other, self) {
         if (other.node.getComponent(cc.PhysicsPolygonCollider) && this.lockHp) {
             if (other.node.getComponent(cc.PhysicsPolygonCollider).tag === 200) {
-                console.log(this.hp);
                 this.hp -= 10
                 this.progressHp.progress = this.hp / gameData.storeHouse.json["boss"]["boss1"]["bossHp"];
                 cc.Tween.stopAllByTarget(this.quan)
                 cc.tween(this.quan)
-                    .call(() => { this.quan.active = true; cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = false; cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = true })
+                    .call(() => {
+                        this.quan.active = true;
+                        if (gameData.nowScene === "boss1") {
+                            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = false;
+                            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = true;
+                        }
+
+                    })
                     .delay(0.05)
                     .call(() => {
                         this.quan.active = false;
@@ -146,8 +149,11 @@ cc.Class({
                 }
             }
         } else {
-            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = true;
-            cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = false
+            if (cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24")) {
+                cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_24").active = true;
+                cc.find("Canvas/BossLayer/pos/boss1/head/face/remi_32").active = false
+            }
+
         }
     },
 
@@ -165,27 +171,45 @@ cc.Class({
         this.progressHp.progress += 0.01
     },
 
-
     bossOver() {
-        gameData.BulletControl.stopShoot();
-        let animaState = this.node.getComponent(cc.Animation).getAnimationState("boss1DieAnima")
-        if (!animaState.isPlaying) {
-            this.anima.play("boss1DieAnima")
+        if (gameData.nowScene === "boss1") {
+            gameData.BulletControl.stopShoot();
+            let animaState = this.node.getComponent(cc.Animation).getAnimationState("boss1DieAnima")
+            if (!animaState.isPlaying) {
+                this.anima.play("boss1DieAnima")
+                this.schedule(() => {
+                    let bobm = cc.instantiate(gameData.storeHouse.prefab["bobm"]);
+                    let randomX = Math.random() * this.node.width - this.node.width / 2
+                    let randomY = Math.random() * this.node.height - this.node.height / 2
+                    bobm.setPosition(cc.v2(randomX, randomY));
+                    this.node.addChild(bobm)
+                }, 0.5, 3)
+                this.scheduleOnce(() => {
+                    gameData.loading.end();
+                }, 2)
+            }
+        } else if (gameData.nowScene === "boss2") {
+            // this.unscheduleAllByTarget();
+            gameData.BulletControl2.stopShoot();
             this.schedule(() => {
                 let bobm = cc.instantiate(gameData.storeHouse.prefab["bobm"]);
                 let randomX = Math.random() * this.node.width - this.node.width / 2
                 let randomY = Math.random() * this.node.height - this.node.height / 2
                 bobm.setPosition(cc.v2(randomX, randomY));
                 this.node.addChild(bobm)
-                if (i = 2) {
-                    let animaState1 = bobm.getComponent(cc.Animation).getAnimationState("bossBobm")
-                    animaState1.on('stop', () => { this.node.parent.destroy() }, this);
-                }
             }, 0.5, 3)
-            this.scheduleOnce(() => {
-                this.node.parent.destroy();
-            }, 2)
+            gameData.hero.getComponent("hero").enterLevel();
+            if (this.ss) {
+                this.ss = false;
+                this.scheduleOnce(() => {
+                    cc.director.loadScene("boss1")
+                    gameData.nowLevel = 4;
+                }, 2)
+            }
+
         }
+
+
     },
 
     update(dt) {

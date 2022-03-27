@@ -19,11 +19,15 @@ gameData.destroy = function (node) {
 
 gameData.gameMain = null;
 
+gameData.game2 = null;
+
 gameData.hero = null;
 
 gameData.BulletControl = null;
 
-gameData.Boss = null;
+gameData.BulletControl2 = null;
+
+gameData.Boss2 = null;
 
 gameData.Boss1 = null;
 
@@ -37,6 +41,9 @@ gameData.cameraWidth = null;
 
 gameData.camera = null;
 
+gameData.skillLayer = null;
+
+gameData.skillCD = 6;
 
 gameData.colliderTag = {
     "bossBullet": 500,
@@ -62,3 +69,8 @@ gameData.nowLevel = 1;
 
 // 是否通过当前关卡
 gameData.isPass = false;
+
+gameData.heroIsDied = false
+
+// 当前关卡
+gameData.nowScene = null;

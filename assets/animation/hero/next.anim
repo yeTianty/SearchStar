@@ -1,0 +1,29 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "next",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "props": {
+      "x": [
+        {
+          "frame": 0,
+          "value": 2280.93
+        },
+        {
+          "frame": 0.5,
+          "value": 2316.545
+        },
+        {
+          "frame": 1,
+          "value": 2280.93
+        }
+      ]
+    }
+  },
+  "events": []
+}
